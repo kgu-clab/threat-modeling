@@ -13,8 +13,8 @@ const makeNextLine = (text: string) => {
 
 const ExplainSection = () => {
   return (
-    <Section>
-      <div className="flex justify-between">
+    <Section className="border-none">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:px-32">
         {explainData.map(({ id, badge, title, description }) => (
           <ExplainCard
             key={id}
