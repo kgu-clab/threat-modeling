@@ -58,7 +58,7 @@ const FileUploaderSection = () => {
         <img src={file} alt="file" className="w-40 m-2" />
       </div>
       <Button className={"mt-6 w-fit"} onClick={onClickModeling}>
-        {modeling ? "Modeling" : "Check Terms"}
+        {isTermsAccepted ? "Modeling" : "Check Terms"}
       </Button>
       {showTerm && (
         <div className="mt-6 space-y-2">
