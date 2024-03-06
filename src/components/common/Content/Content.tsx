@@ -1,8 +1,4 @@
-import React from "react";
-
-interface ContentProps {
-  children?: React.ReactNode;
-}
+interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Content = ({ children }: ContentProps) => {
   return (

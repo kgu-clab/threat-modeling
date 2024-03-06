@@ -1,7 +1,7 @@
 import { Badge } from "../Badge/Badge";
-import explain1 from "/src/assets/explain/explain1.svg";
-import explain2 from "/src/assets/explain/explain2.svg";
-import explain3 from "/src/assets/explain/explain3.svg";
+import explain1 from "@assets/svg/explain-how.svg";
+import explain2 from "@assets/svg/explain-who.svg";
+import explain3 from "@assets/svg/explain-result.svg";
 
 interface ExplainCardProps {
   id: number;
