@@ -22,6 +22,16 @@
 
     "baseUrl": ".",
     "paths": {
+      "@api/*": ["./src/api/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@router/*": ["./src/router/*"],
+      "@style/*": ["./src/style/*"],
+      "@type/*": ["./src/types/*"],
+      "@utils/*": ["./src/utils/*"],
       "@/*": ["./src/*"]
     },
     "esModuleInterop": true
