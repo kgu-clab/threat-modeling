@@ -1,15 +1,30 @@
 const Footer = () => {
   return (
-    <footer className="p-8 bg-gray-200 footer">
-      <aside>
-        <p className="text-xl font-semibold">Threat Modeling</p>
-        <p>DS Lab</p>
-
-        <ul className="text-xs leading-loose">
-          <li>Developed By 김도훈, 김관식, 한관희, 김가을, 김정은</li>
-          <li className="font-semibold">© DS-Lab. All rights reserved.</li>
-        </ul>
-      </aside>
+    <footer className="container my-6">
+      <hr />
+      <p className="my-6 text-xl font-semibold">🛡️ Threat Modeling</p>
+      <ul className="text-xs leading-loose">
+        <li>
+          <a
+            href="https://sites.google.com/view/ksel/ds-lab?authuser=0"
+            target="_blank"
+          >
+            Developed By Distributed Security Lab
+          </a>
+          <span> & </span>
+          <a href="https://github.com/KGU-C-Lab" target="_blank">
+            Kyonggi University C-Lab
+          </a>
+        </li>
+        <li className="font-semibold">
+          <a
+            href="https://sites.google.com/view/ksel/ds-lab?authuser=0"
+            target="_blank"
+          >
+            © Distributed Security Lab. All rights reserved.
+          </a>
+        </li>
+      </ul>
     </footer>
   );
 };

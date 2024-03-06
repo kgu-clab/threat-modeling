@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import { cn } from '@utils/component';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -8,10 +8,7 @@ interface SectionProps {
 const Section = ({ className, children }: SectionProps) => {
   return (
     <div
-      className={classNames(
-        "flex flex-col rounded-lg border bg-white p-4",
-        className
-      )}
+      className={cn('flex flex-col rounded-lg border bg-white p-4', className)}
     >
       {children}
     </div>
@@ -38,7 +35,7 @@ interface SectionBodyProps {
 }
 
 Section.Body = ({ className, children }: SectionBodyProps) => {
-  return <div className={classNames("mt-4", className)}>{children}</div>;
+  return <div className={cn('mt-4', className)}>{children}</div>;
 };
 
 export default Section;
