@@ -1,8 +1,8 @@
 import Content from '@components/common/Content/Content';
-import ExplainSection from '@components/main/ExplainSection/ExplainSection';
-import FileUploaderSection from '@components/main/FileUploaderSection/FileUploaderSection';
+import ExplainSection from '@components/home/ExplainSection/ExplainSection';
+import FileUploaderSection from '@components/home/FileUploaderSection/FileUploaderSection';
 
-const MainPage = () => {
+const HomePage = () => {
   return (
     <Content>
       <div className="flex flex-col justify-center h-56 text-center bg-gray-200">
@@ -19,4 +19,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default HomePage;
