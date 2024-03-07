@@ -7,14 +7,16 @@ const Navbar = () => {
 
   const selected = (name: string) => {
     return cn(
-      location.pathname === name ? 'font-semibold text-black' : 'text-gray-500',
+      location.pathname === name
+        ? 'font-semibold text-black'
+        : 'text-gray-500 hover:text-black',
     );
   };
 
   return (
     <nav className="w-full bg-white h-14">
-      <div className="container flex items-center justify-end h-full">
-        <div className="space-x-6 text-sm">
+      <div className="container flex items-center justify-center h-full gap-2 text-sm md:divide-x md:justify-end">
+        <div className="space-x-6">
           <Link className={selected(PATH.HOME)} to={PATH.HOME}>
             Home
           </Link>
@@ -23,6 +25,15 @@ const Navbar = () => {
           </Link>
           <Link className={selected(PATH.EXAMPLE)} to={PATH.EXAMPLE}>
             Example
+          </Link>
+        </div>
+        <div className="pl-2 space-x-6">
+          <Link
+            className={selected(PATH.ROOT)}
+            to="https://center-for-threat-informed-defense.github.io/attack-flow/ui/"
+            target="_blank"
+          >
+            Attack Flow Builder
           </Link>
         </div>
       </div>
