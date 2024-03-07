@@ -1,0 +1,475 @@
+[
+    {
+        "mitigationId": "M1013",
+        "relatedDefendTechniques": []
+    },
+    {
+        "mitigationId": "M1015",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-ANCI",
+                "defendName": "Authentication Cache Invalidation"
+            },
+            {
+                "defendId": "D3-DTP",
+                "defendName": "Domain Trust Policy"
+            },
+            {
+                "defendId": "D3-UAP",
+                "defendName": "User Account Permissions"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1016",
+        "relatedDefendTechniques": []
+    },
+    {
+        "mitigationId": "M1017",
+        "relatedDefendTechniques": []
+    },
+    {
+        "mitigationId": "M1018",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-LFP",
+                "defendName": "Local File Pernissions"
+            },
+            {
+                "defendId": "D3-MAC",
+                "defendName": "Madatory Access Control"
+            },
+            {
+                "defendId": "D3-SCP",
+                "defendName": "System Configutraion Permissions"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1019",
+        "relatedDefendTechniques": []
+    },
+    {
+        "mitigationId": "M1020",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-NTA",
+                "defendName": "Network Traffic Analysis"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1021",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DNSAL",
+                "defendName": "DNS Allowlisting"
+            },
+            {
+                "defendId": "D3-DNSDL",
+                "defendName": "DNS Allowlisting"
+            },
+            {
+                "defendId": "D3-FA",
+                "defendName": "File Analysis"
+            },
+            {
+                "defendId": "D3-ITF",
+                "defendName": "Inbound Traffic Analysis"
+            },
+            {
+                "defendId": "D3-NTA",
+                "defendName": "Network Traffic Analysis"
+            },
+            {
+                "defendId": "D3-OTF",
+                "defendName": "Outbound Traffic Filtering"
+            },
+            {
+                "defendId": "D3-UA",
+                "defendName": "URL Analysis"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1022",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-LFP",
+                "defendName": "Local File Permissions"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1024",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-SCP",
+                "defendName": "System Configuration Permissions"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1025",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-BA",
+                "defendName": "Bootloader Authentication"
+            },
+            {
+                "defendId": "D3-DLIC",
+                "defendName": "Driver Load ntegrity Checking"
+            },
+            {
+                "defendId": "D3-MAC",
+                "defendName": "Mandatory Access Control"
+            },
+            {
+                "defendId": "D3-PSEP",
+                "defendName": "Process Segment Execution Prevention"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1026",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DAM",
+                "defendName": "Domain Account Monitoring"
+            },
+            {
+                "defendId": "D3-LAM",
+                "defendName": "Local Account Monitoring"
+            },
+            {
+                "defendId": "D3-SPP",
+                "defendName": "Stroung Password Policy"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1027",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-OTP",
+                "defendName": "One-time Password"
+            },
+            {
+                "defendId": "D3-SPP",
+                "defendName": "Stroung Password Policy"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1028",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-PH",
+                "defendName": "Platform Hardening"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1029",
+        "relatedDefendTechniques": []
+    },
+    {
+        "mitigationId": "M1030",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-BDI",
+                "defendName": "Broadcast Domain Isolation"
+            },
+            {
+                "defendId": "D3-ET",
+                "defendName": "Encrypted Tnnels"
+            },
+            {
+                "defendId": "D3-ISVA",
+                "defendName": "Inbound Session Volume Analysis"
+            },
+            {
+                "defendId": "D3-ITF",
+                "defendName": "Inbound Traffic Analysis"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1031",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-ITF",
+                "defendName": "Inbound Traffic Filtering"
+            },
+            {
+                "defendId": "D3-NTA",
+                "defendName": "Network Traffic Analysis"
+            },
+            {
+                "defendId": "D3-OTF",
+                "defendName": "Outbound Trffic Filtering"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1032",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-MFA",
+                "defendName": "Multi-factor Authentication"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1033",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-EAL",
+                "defendName": "Executable Allowlisting"
+            },
+            {
+                "defendId": "D3-EDL",
+                "defendName": "Executable Denylisting"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1034",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-IOPR",
+                "defendName": "IO Port Restriction"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1035",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-NI",
+                "defendName": "Network Isolation"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1036",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-AL",
+                "defendName": "Account Locking"
+            },
+            {
+                "defendId": "D3-ANCI",
+                "defendName": "Authentication Cache Invalidation"
+            },
+            {
+                "defendId": "D3-ANET",
+                "defendName": "Authentication Event Thresholding"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1037",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-NI",
+                "defendName": "Network Isolation"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1038",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DLIC",
+                "defendName": "Driver Load Integrity Checking"
+            },
+            {
+                "defendId": "D3-EAL",
+                "defendName": "Executable Allowlisting"
+            },
+            {
+                "defendId": "D3-EDL",
+                "defendName": "Executable Denylisting"
+            },
+            {
+                "defendId": "D3-PSEP",
+                "defendName": "Process Segment Execution Prevention"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1039",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-ACH",
+                "defendName": " Application Configuration Hardening"
+            },
+            {
+                "defendId": "D3-SFA",
+                "defendName": "system File Analysis"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1040",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-ANET",
+                "defendName": "Authentication Event Thresholding"
+            },
+            {
+                "defendId": "D3-AZET",
+                "defendName": "Authorizaion Event thresholding"
+            },
+            {
+                "defendId": "D3-JFAPA",
+                "defendName": "Job Function Access Pattern Analysis"
+            },
+            {
+                "defendId": "D3-RAPA",
+                "defendName": "Resource access Pattern Analysis"
+            },
+            {
+                "defendId": "D3-SDA",
+                "defendName": "Session Duraion Analysis"
+            },
+            {
+                "defendId": "D3-UDTA",
+                "defendName": "User Data Transfer Analysis"
+            },
+            {
+                "defendId": "D3-UGLPA",
+                "defendName": "User Geolocation logon Pattern Analysis"
+            },
+            {
+                "defendId": "D3-WSAA",
+                "defendName": "Web Session Activity Analysis"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1041",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DENCR",
+                "defendName": "Disk Encryption"
+            },
+            {
+                "defendId": "D3-ET",
+                "defendName": "Encryped Tunnels"
+            },
+            {
+                "defendId": "D3-FE",
+                "defendName": "File encryption"
+            },
+            {
+                "defendId": "D3-MENCR",
+                "defendName": "Message Encryption"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1042",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-ACH",
+                "defendName": "Application Configuration Hardening"
+            },
+            {
+                "defendId": "D3-EDL",
+                "defendName": "Executable Denylisting"
+            },
+            {
+                "defendId": "D3-MAC",
+                "defendName": "Mandatory Access Control"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1043",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-HBPI",
+                "defendName": "Hardware-based Process Isolation"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1044",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-SCF",
+                "defendName": "System Call Filtering"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1045",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DLIC",
+                "defendName": "Driver Load Integrity Checking"
+            },
+            {
+                "defendId": "D3-EAL",
+                "defendName": "Executable Allowlisting"
+            },
+            {
+                "defendId": "D3-SBV",
+                "defendName": "Service Binary Integrity"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1046",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-BA",
+                "defendName": "Bootloader Authentication"
+            },
+            {
+                "defendId": "D3-TBI",
+                "defendName": "TPM Boot Integriy"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1047",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DAM",
+                "defendName": "Domain Account Monitoring"
+            },
+            {
+                "defendId": "D3-LAM",
+                "defendName": "Local Account Monitoring"
+            },
+            {
+                "defendId": "D3-SFA",
+                "defendName": "system File Analysis"
+            }
+        ]
+    },
+    {
+        "mitigationId": "M1048",
+        "relatedDefendTechniques": [
+            {
+                "defendId": "D3-DA",
+                "defendName": "Dynamic Analysis"
+            },
+            {
+                "defendId": "D3-HBPI",
+                "defendName": "Hardware-based Process Isolation"
+            },
+            {
+                "defendId": "D3-MAC",
+                "defendName": "Mandatory Access Control"
+            },
+            {
+                "defendId": "D3-SCF",
+                "defendName": "System Call Filtering"
+            }
+        ]
+    }
+]

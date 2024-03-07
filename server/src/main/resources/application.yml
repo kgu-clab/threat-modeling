@@ -1,0 +1,4 @@
+# Configure the logging level to info for Spring Framework
+logging:
+    level:
+        org.springframework: info
