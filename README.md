@@ -1,4 +1,9 @@
-# C-Lab Project Template
+![localhost_8000_](https://github.com/KGU-C-Lab/threat-modeling/assets/39869096/c59513d0-16ae-454b-993a-b57d27626d96)
+
+# threat-modeling
+
+보안 위협을 미리 파악하고 체계적으로 대응해 보세요.  
+단 한 개의 JSON 파일로 시작되는 철저한 보안 진단. MITRE와 NIST 기준에 따른 위협 분석을 통해 보안 취약성과 대응 방안을 정리하여 알려드릴게요.
 
 ## 기여하기
 
