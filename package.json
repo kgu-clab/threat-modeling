@@ -1,0 +1,13 @@
+{
+  "name": "threat-modeling",
+  "version": "1.0.0",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
+    "husky": "^9.0.11"
+  }
+}
