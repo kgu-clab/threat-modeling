@@ -1,28 +1,44 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <footer className="container my-6">
       <hr />
-      <p className="my-6 text-xl font-semibold">🛡️ Threat Modeling</p>
+      <ul className="my-6">
+        <li className="text-xl font-semibold">🛡️ Threat Modeling</li>
+      </ul>
       <ul className="text-xs leading-loose">
+        <li className="space-x-2 divide-x">
+          <Link to="" className="hover:underline">
+            이용약관
+          </Link>
+          <Link to="" className="pl-2 hover:underline">
+            개인정보처리방침
+          </Link>
+          <Link to="" className="pl-2 hover:underline">
+            업데이트 내역
+          </Link>
+        </li>
         <li>
-          <a
-            href="https://sites.google.com/view/ksel/ds-lab?authuser=0"
+          <span>Developed By </span>
+          <Link
+            to="https://sites.google.com/view/ksel/ds-lab?authuser=0"
             target="_blank"
+            className="hover:underline"
           >
-            Developed By Distributed Security Lab
-          </a>
+            Distributed Security Lab
+          </Link>
           <span> & </span>
-          <a href="https://github.com/KGU-C-Lab" target="_blank">
+          <Link
+            to="https://github.com/KGU-C-Lab"
+            target="_blank"
+            className="hover:underline"
+          >
             Kyonggi University C-Lab
-          </a>
+          </Link>
         </li>
         <li className="font-semibold">
-          <a
-            href="https://sites.google.com/view/ksel/ds-lab?authuser=0"
-            target="_blank"
-          >
-            © Distributed Security Lab. All rights reserved.
-          </a>
+          © Distributed Security Lab. All rights reserved.
         </li>
       </ul>
     </footer>
