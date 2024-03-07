@@ -1,21 +1,31 @@
-import Content from '@components/common/Content/Content';
-import ExplainSection from '@components/home/ExplainSection/ExplainSection';
-import FileUploaderSection from '@components/home/FileUploaderSection/FileUploaderSection';
+import HomeExplain from '@components/home/HomeExplain/HomeExplain';
+import HomeTitle from '@components/home/HomeTitle/HomeTitle';
+
+import Dropzone from '@components/common/Dropzone/Dropzone';
+import { Link } from 'react-router-dom';
+import { PATH } from '@constants/path';
+import Hr from '@components/common/Hr/Hr';
 
 const HomePage = () => {
   return (
-    <Content>
-      <div className="flex flex-col justify-center h-56 text-center bg-gray-200">
-        <h1 className="mb-4 text-4xl font-bold text-gray-700">
-          Threat Modeling
-        </h1>
-        <h2 className="text-gray-600">
-          체계적이고 정확한 보안 취약성 분석과 대응 방안을 제공힙니다.
-        </h2>
-      </div>
-      <ExplainSection />
-      <FileUploaderSection />
-    </Content>
+    <div>
+      <HomeTitle />
+      <HomeExplain />
+      <Hr className="px-2 space-x-2">
+        <Link to={PATH.GUIDE} className="hover:underline">
+          Guide
+        </Link>
+        <span>•</span>
+        <Link
+          to="https://center-for-threat-informed-defense.github.io/attack-flow/ui/"
+          target="_blank"
+          className="hover:underline"
+        >
+          Attack Flow Builder
+        </Link>
+      </Hr>
+      <Dropzone />
+    </div>
   );
 };
 
