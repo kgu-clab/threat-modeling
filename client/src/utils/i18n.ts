@@ -32,6 +32,7 @@ const resources = {
       termsOfUse: 'Terms of Use',
       privacyPolicy: 'Privacy Policy',
       changelog: 'Changelog',
+      download: 'Download',
     },
   },
   // 한국어
@@ -62,6 +63,7 @@ const resources = {
       termsOfUse: '이용약관',
       privacyPolicy: '개인정보처리방침',
       changelog: '변경내역',
+      download: '다운로드',
     },
   },
 };
