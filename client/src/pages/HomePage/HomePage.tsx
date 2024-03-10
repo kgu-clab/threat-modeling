@@ -5,15 +5,18 @@ import Dropzone from '@components/common/Dropzone/Dropzone';
 import { Link } from 'react-router-dom';
 import { PATH } from '@constants/path';
 import Hr from '@components/common/Hr/Hr';
+import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <HomeTitle />
       <HomeExplain />
       <Hr className="px-2 space-x-2">
         <Link to={PATH.GUIDE} className="hover:underline">
-          Guide
+          {t('guide')}
         </Link>
         <span>•</span>
         <Link

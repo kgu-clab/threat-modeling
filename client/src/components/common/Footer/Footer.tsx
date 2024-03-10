@@ -1,22 +1,29 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="container my-6">
       <hr />
-      <ul className="my-6">
+      <ul className="my-6 space-y-2">
         <li className="text-xl font-semibold">🛡️ Threat Modeling</li>
+        <li className="flex items-center gap-2">
+          <img src="https://img.shields.io/badge/build-v1.0.0-3178C6" />
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/KGU-C-Lab/threat-modeling" />
+        </li>
       </ul>
-      <ul className="text-xs leading-loose">
+      <ul className="text-xs leading-relaxed">
         <li className="space-x-2 divide-x">
           <Link to="" className="hover:underline">
-            이용약관
+            {t('termsOfUse')}
           </Link>
           <Link to="" className="pl-2 hover:underline">
-            개인정보처리방침
+            {t('privacyPolicy')}
           </Link>
           <Link to="" className="pl-2 hover:underline">
-            업데이트 내역
+            {t('changelog')}
           </Link>
         </li>
         <li>
