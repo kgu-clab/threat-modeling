@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './Layout';
 import { PATH } from '@constants/path';
 import MainPage from '@pages/HomePage/HomePage';
+import ResultPage from '@pages/ResultPage/ResultPage';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -12,6 +13,10 @@ const Router = () => {
         {
           path: PATH.HOME,
           element: <MainPage />,
+        },
+        {
+          path: PATH.RESULT,
+          element: <ResultPage />,
         },
       ],
     },
