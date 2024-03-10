@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import pkg from '../../../../package.json';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -10,7 +11,9 @@ const Footer = () => {
       <ul className="my-6 space-y-2">
         <li className="text-xl font-semibold">🛡️ Threat Modeling</li>
         <li className="flex items-center gap-2">
-          <img src="https://img.shields.io/badge/build-v1.0.0-3178C6" />
+          <img
+            src={`https://img.shields.io/badge/build-${pkg.version}-3178C6`}
+          />
           <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/KGU-C-Lab/threat-modeling" />
         </li>
       </ul>
