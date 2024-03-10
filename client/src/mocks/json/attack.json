@@ -1,0 +1,129 @@
+{
+  "success": true,
+  "data": {
+    "attack": {
+      "attackId": "T1114",
+      "attackName": "Email Collection",
+      "attackType": "technique",
+      "mappingDescription": "Use of multi-factor authentication for public-facing webmail servers is a recommended best practice to minimize the usefulness of usernames and passwords to adversaries."
+    },
+    "relatedControls": [
+      {
+        "controlId": "AC-16",
+        "controlName": "Security and Privacy Attributes"
+      },
+      {
+        "controlId": "AC-17",
+        "controlName": "Remote Access"
+      },
+      {
+        "controlId": "AC-19",
+        "controlName": "Access Control for Mobile Devices"
+      },
+      {
+        "controlId": "AC-20",
+        "controlName": "Use of External Systems"
+      },
+      {
+        "controlId": "AC-3",
+        "controlName": "Access Enforcement"
+      },
+      {
+        "controlId": "AC-4",
+        "controlName": "Information Flow Enforcement"
+      },
+      {
+        "controlId": "CM-2",
+        "controlName": "Baseline Configuration"
+      },
+      {
+        "controlId": "CM-6",
+        "controlName": "Configuration Settings"
+      },
+      {
+        "controlId": "IA-2",
+        "controlName": "Identification and Authentication (organizational Users)"
+      },
+      {
+        "controlId": "IA-5",
+        "controlName": "Authenticator Management"
+      },
+      {
+        "controlId": "SC-7",
+        "controlName": "Boundary Protection"
+      },
+      {
+        "controlId": "SI-12",
+        "controlName": "Information Management and Retention"
+      },
+      {
+        "controlId": "SI-4",
+        "controlName": "System Monitoring"
+      },
+      {
+        "controlId": "SI-7",
+        "controlName": "Software, Firmware, and Information Integrity"
+      }
+    ],
+    "relatedMitigations": [
+      {
+        "mitigationId": "M1032",
+        "mitigationName": "Multi-factor Authentication",
+        "relatedDefendTechniques": [
+          {
+            "defendId": "D3-MFA",
+            "defendName": "Multi-factor Authentication"
+          }
+        ]
+      },
+      {
+        "mitigationId": "M1041",
+        "mitigationName": "Encrypt Sensitive Information",
+        "relatedDefendTechniques": [
+          {
+            "defendId": "D3-DENCR",
+            "defendName": "Disk Encryption"
+          },
+          {
+            "defendId": "D3-ET",
+            "defendName": "Encryped Tunnels"
+          },
+          {
+            "defendId": "D3-FE",
+            "defendName": "File encryption"
+          },
+          {
+            "defendId": "D3-MENCR",
+            "defendName": "Message Encryption"
+          }
+        ]
+      },
+      {
+        "mitigationId": "M1047",
+        "mitigationName": "Audit",
+        "relatedDefendTechniques": [
+          {
+            "defendId": "D3-DAM",
+            "defendName": "Domain Account Monitoring"
+          },
+          {
+            "defendId": "D3-LAM",
+            "defendName": "Local Account Monitoring"
+          },
+          {
+            "defendId": "D3-SFA",
+            "defendName": "system File Analysis"
+          }
+        ]
+      }
+    ],
+    "relatedCves": [
+      {
+        "cveId": "CVE-2020-9819",
+        "cvss": 4.3,
+        "phase": "Phase 1",
+        "description": "Uncategorized"
+      }
+    ]
+  }
+}
