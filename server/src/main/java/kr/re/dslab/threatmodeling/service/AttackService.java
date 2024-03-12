@@ -25,18 +25,33 @@ public class AttackService {
 
     private final AttackRepository attackRepository;
 
-    public AttackRelatedResponseDto getAttackRelatedInfo(String attackId) {
-        Attack attack = getAttackByIdOrThrow(attackId);
-        AttackResponseDto attackResponseDto = AttackResponseDto.of(attack);
-        List<ControlResponseDto> controlResponseDtos = controlService.getControlByAttackId(attackId);
-        List<MitigationResponseDto> mitigationResponseDtos = mitigationService.getMitigationByAttackId(attackId);
-        List<CveResponseDto> cveResponseDtos = cveService.getCveByAttackId(attackId);
-        return AttackRelatedResponseDto.of(attackResponseDto, controlResponseDtos, mitigationResponseDtos, cveResponseDtos);
+    public List<AttackRelatedResponseDto> getAllAttackRelatedInfo() {
+        List<Attack> attacks = attackRepository.findAll();
+        return attacks.stream()
+                .map(this::getAttackRelatedResponseDto)
+                .toList();
+    }
+
+    public List<AttackRelatedResponseDto> getAttackRelatedInfo(List<String> attackIds) {
+        List<Attack> attacks = attackRepository.findAllById(attackIds);
+        return attacks.stream()
+                .map(this::getAttackRelatedResponseDto)
+                .toList();
     }
 
     private Attack getAttackByIdOrThrow(String attackId) {
         return attackRepository.findById(attackId)
                 .orElseThrow(() -> new NotFoundException("해당하는 공격 정보가 없습니다."));
+    }
+
+    private AttackRelatedResponseDto getAttackRelatedResponseDto(Attack attack) {
+        String attackId = attack.getAttackId();
+        return AttackRelatedResponseDto.of(
+                AttackResponseDto.of(attack),
+                controlService.getControlByAttackId(attackId),
+                mitigationService.getMitigationByAttackId(attackId),
+                cveService.getCveByAttackId(attackId)
+        );
     }
 
 }
