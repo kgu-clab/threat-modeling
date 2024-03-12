@@ -6,6 +6,7 @@ import kr.re.dslab.threatmodeling.type.entity.Cve;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,27 +16,27 @@ public class CveService {
     private final CveRepository cveRepository;
 
     public List<CveResponseDto> getCveByAttackId(String attackId) {
-        List<Cve> primaryImpactCves = findCvesByPrimaryImpactContainsAttackId(attackId);
-        List<Cve> secondaryImpactCves = findCvesBySecondaryImpactContainsAttackId(attackId);
-        List<Cve> exploitationTechniqueCves = findCvesByExploitationTechniqueContainsAttackId(attackId);
-        List<Cve> uncategorizedCves = findCvesByUncategorizedContainsAttackId(attackId);
-        return CveResponseDto.of(primaryImpactCves, secondaryImpactCves, exploitationTechniqueCves, uncategorizedCves);
+        List<Cve> cves = cveRepository.findCvesByAttackId(attackId);
+        return aggregateCves(cves, attackId);
     }
 
-    public List<Cve> findCvesByPrimaryImpactContainsAttackId(String attackId) {
-        return cveRepository.findCvesByPrimaryImpactContaining(attackId);
-    }
-
-    public List<Cve> findCvesBySecondaryImpactContainsAttackId(String attackId) {
-        return cveRepository.findCvesBySecondaryImpactContaining(attackId);
-    }
-
-    public List<Cve> findCvesByExploitationTechniqueContainsAttackId(String attackId) {
-        return cveRepository.findCvesByExploitationTechniqueContaining(attackId);
-    }
-
-    public List<Cve> findCvesByUncategorizedContainsAttackId(String attackId) {
-        return cveRepository.findCvesByUncategorizedContaining(attackId);
+    private List<CveResponseDto> aggregateCves(List<Cve> cves, String attackId) {
+        List<CveResponseDto> cveResponseDtos = new ArrayList<>();
+        for (Cve cve : cves) {
+            if (cve.getPrimaryImpact() != null && cve.getPrimaryImpact().contains(attackId)) {
+                cveResponseDtos.add(CveResponseDto.of(cve, "Primary Impact"));
+            }
+            if (cve.getSecondaryImpact() != null && cve.getSecondaryImpact().contains(attackId)) {
+                cveResponseDtos.add(CveResponseDto.of(cve, "Secondary Impact"));
+            }
+            if (cve.getExploitationTechnique() != null && cve.getExploitationTechnique().contains(attackId)) {
+                cveResponseDtos.add(CveResponseDto.of(cve, "Exploitation Technique"));
+            }
+            if (cve.getUncategorized() != null && cve.getUncategorized().contains(attackId)) {
+                cveResponseDtos.add(CveResponseDto.of(cve, "Uncategorized"));
+            }
+        }
+        return cveResponseDtos;
     }
 
 }
