@@ -8,7 +8,10 @@ import kr.re.dslab.threatmodeling.type.dto.MitigationResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Mitigation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,12 +28,20 @@ public class MitigationService {
         return MitigationResponseDto.of(mitigation, relatedDefendTechniques);
     }
 
+    @Transactional(readOnly = true)
     public List<MitigationResponseDto> getMitigationByAttackId(String attackId) {
-        return mitigationRepository.findMitigationsByAttackId(attackId).stream()
-                .peek(mitigationDto -> {
+        List<MitigationResponseDto> mitigationDtos = mitigationRepository.findMitigationsByAttackId(attackId);
+
+        List<CompletableFuture<MitigationResponseDto>> futureMitigationDtos = mitigationDtos.stream()
+                .map(mitigationDto -> CompletableFuture.supplyAsync(() -> {
                     List<DefendResponseDto> defends = defendRepository.findDefendsByMitigationId(mitigationDto.getMitigationId());
                     mitigationDto.setRelatedDefendTechniques(defends);
-                })
+                    return mitigationDto;
+                }))
+                .toList();
+
+        return futureMitigationDtos.stream()
+                .map(CompletableFuture::join)
                 .collect(Collectors.toList());
     }
 
