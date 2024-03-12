@@ -35,12 +35,6 @@ public class AttackService {
 
     private final CacheManager cacheManager;
 
-    @Cacheable(value = "attacksAll", unless = "#result.isEmpty()")
-    public List<AttackRelatedResponseDto> getAllAttackRelatedInfo() {
-        List<String> allAttackIds = attackRepository.findAllAttackIds();
-        return fetchAndCacheAttackInfo(allAttackIds);
-    }
-
     public List<AttackRelatedResponseDto> getAttackRelatedInfo(List<String> attackIds) {
         return fetchAndCacheAttackInfo(attackIds);
     }

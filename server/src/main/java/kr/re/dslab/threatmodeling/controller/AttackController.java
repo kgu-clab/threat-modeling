@@ -21,15 +21,6 @@ public class AttackController {
 
     private final AttackService attackService;
 
-    @Operation(summary = "Attack 관련 정보(Control, Mitigation, CVE) 전체 조회", description = "ROLE_ANONYMOUS 이상의 권한이 필요함")
-    @GetMapping("/all")
-    public ResponseModel getAllAttacks() {
-        List<AttackRelatedResponseDto> attackRelatedResponseDtos = attackService.getAllAttackRelatedInfo();
-        ResponseModel responseModel = ResponseModel.builder().build();
-        responseModel.addData(attackRelatedResponseDtos);
-        return responseModel;
-    }
-
     @Operation(summary = "Attack 관련 정보(Control, Mitigation, CVE) 조회", description = "ROLE_ANONYMOUS 이상의 권한이 필요함")
     @GetMapping("")
     public ResponseModel getAttack(
