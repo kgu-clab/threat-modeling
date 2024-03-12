@@ -16,7 +16,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,23 +46,27 @@ public class AttackService {
     }
 
     private List<AttackRelatedResponseDto> fetchAndCacheAttackInfo(List<String> attackIds) {
-        List<AttackRelatedResponseDto> results = new ArrayList<>();
-        for (String attackId : attackIds) {
-            AttackRelatedResponseDto cachedData = getCachedAttackRelatedInfo(attackId);
-            if (cachedData != null) {
-                results.add(cachedData);
-            } else {
-                Attack attack = attackRepository.findById(attackId)
-                        .orElse(null);
-                if (attack != null) {
-                    AttackRelatedResponseDto responseDto = createAttackRelatedResponseDto(attack);
-                    results.add(responseDto);
-                    cacheAttackRelatedInfo(attackId, responseDto);
-                }
-            }
-        }
-        return results;
+        List<CompletableFuture<AttackRelatedResponseDto>> futures = attackIds.stream()
+                .map(attackId -> CompletableFuture.supplyAsync(() -> {
+                    AttackRelatedResponseDto cachedData = getCachedAttackRelatedInfo(attackId);
+                    if (cachedData != null) {
+                        return cachedData;
+                    } else {
+                        return attackRepository.findById(attackId).map(attack -> {
+                            AttackRelatedResponseDto responseDto = createAttackRelatedResponseDto(attack);
+                            cacheAttackRelatedInfo(attackId, responseDto);
+                            return responseDto;
+                        }).orElse(null);
+                    }
+                }))
+                .toList();
+
+        return futures.stream()
+                .map(CompletableFuture::join)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
+
 
     private AttackRelatedResponseDto createAttackRelatedResponseDto(Attack attack) {
         String attackId = attack.getAttackId();
