@@ -9,9 +9,14 @@ import kr.re.dslab.threatmodeling.type.dto.CveResponseDto;
 import kr.re.dslab.threatmodeling.type.dto.MitigationResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Attack;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,26 +30,38 @@ public class AttackService {
 
     private final AttackRepository attackRepository;
 
+    private final CacheManager cacheManager;
+
+    @Cacheable(value = "attacksAll", unless = "#result.isEmpty()")
     public List<AttackRelatedResponseDto> getAllAttackRelatedInfo() {
-        List<Attack> attacks = attackRepository.findAll();
-        return attacks.stream()
-                .map(this::getAttackRelatedResponseDto)
-                .toList();
+        List<String> allAttackIds = attackRepository.findAllAttackIds();
+        return fetchAndCacheAttackInfo(allAttackIds);
     }
 
     public List<AttackRelatedResponseDto> getAttackRelatedInfo(List<String> attackIds) {
-        List<Attack> attacks = attackRepository.findAllById(attackIds);
-        return attacks.stream()
-                .map(this::getAttackRelatedResponseDto)
-                .toList();
+        return fetchAndCacheAttackInfo(attackIds);
     }
 
-    private Attack getAttackByIdOrThrow(String attackId) {
-        return attackRepository.findById(attackId)
-                .orElseThrow(() -> new NotFoundException("해당하는 공격 정보가 없습니다."));
+    private List<AttackRelatedResponseDto> fetchAndCacheAttackInfo(List<String> attackIds) {
+        List<AttackRelatedResponseDto> results = new ArrayList<>();
+        for (String attackId : attackIds) {
+            AttackRelatedResponseDto cachedData = getCachedAttackRelatedInfo(attackId);
+            if (cachedData != null) {
+                results.add(cachedData);
+            } else {
+                Attack attack = attackRepository.findById(attackId)
+                        .orElse(null);
+                if (attack != null) {
+                    AttackRelatedResponseDto responseDto = createAttackRelatedResponseDto(attack);
+                    results.add(responseDto);
+                    cacheAttackRelatedInfo(attackId, responseDto);
+                }
+            }
+        }
+        return results;
     }
 
-    private AttackRelatedResponseDto getAttackRelatedResponseDto(Attack attack) {
+    private AttackRelatedResponseDto createAttackRelatedResponseDto(Attack attack) {
         String attackId = attack.getAttackId();
         return AttackRelatedResponseDto.of(
                 AttackResponseDto.of(attack),
@@ -52,6 +69,18 @@ public class AttackService {
                 mitigationService.getMitigationByAttackId(attackId),
                 cveService.getCveByAttackId(attackId)
         );
+    }
+
+    private AttackRelatedResponseDto getCachedAttackRelatedInfo(String attackId) {
+        Cache cache = cacheManager.getCache("attackRelatedInfo");
+        return cache != null ? cache.get(attackId, AttackRelatedResponseDto.class) : null;
+    }
+
+    private void cacheAttackRelatedInfo(String attackId, AttackRelatedResponseDto dto) {
+        Cache cache = cacheManager.getCache("attackRelatedInfo");
+        if (cache != null) {
+            cache.put(attackId, dto);
+        }
     }
 
 }
