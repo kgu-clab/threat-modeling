@@ -6,8 +6,10 @@ import kr.re.dslab.threatmodeling.type.entity.Cve;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -21,22 +23,19 @@ public class CveService {
     }
 
     private List<CveResponseDto> aggregateCves(List<Cve> cves, String attackId) {
-        List<CveResponseDto> cveResponseDtos = new ArrayList<>();
-        for (Cve cve : cves) {
-            if (cve.getPrimaryImpact() != null && cve.getPrimaryImpact().contains(attackId)) {
-                cveResponseDtos.add(CveResponseDto.of(cve, "Primary Impact"));
-            }
-            if (cve.getSecondaryImpact() != null && cve.getSecondaryImpact().contains(attackId)) {
-                cveResponseDtos.add(CveResponseDto.of(cve, "Secondary Impact"));
-            }
-            if (cve.getExploitationTechnique() != null && cve.getExploitationTechnique().contains(attackId)) {
-                cveResponseDtos.add(CveResponseDto.of(cve, "Exploitation Technique"));
-            }
-            if (cve.getUncategorized() != null && cve.getUncategorized().contains(attackId)) {
-                cveResponseDtos.add(CveResponseDto.of(cve, "Uncategorized"));
-            }
-        }
-        return cveResponseDtos;
+        return cves.parallelStream()
+                .flatMap(cve -> Stream.of(
+                        cve.getPrimaryImpact() != null && cve.getPrimaryImpact().contains(attackId) ?
+                                CveResponseDto.of(cve, "Primary Impact") : null,
+                        cve.getSecondaryImpact() != null && cve.getSecondaryImpact().contains(attackId) ?
+                                CveResponseDto.of(cve, "Secondary Impact") : null,
+                        cve.getExploitationTechnique() != null && cve.getExploitationTechnique().contains(attackId) ?
+                                CveResponseDto.of(cve, "Exploitation Technique") : null,
+                        cve.getUncategorized() != null && cve.getUncategorized().contains(attackId) ?
+                                CveResponseDto.of(cve, "Uncategorized") : null
+                ))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
 }
