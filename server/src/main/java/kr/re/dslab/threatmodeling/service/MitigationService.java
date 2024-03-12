@@ -1,61 +1,53 @@
 package kr.re.dslab.threatmodeling.service;
 
 import kr.re.dslab.threatmodeling.exception.NotFoundException;
+import kr.re.dslab.threatmodeling.repository.DefendRepository;
 import kr.re.dslab.threatmodeling.repository.MitigationRepository;
 import kr.re.dslab.threatmodeling.type.dto.DefendResponseDto;
 import kr.re.dslab.threatmodeling.type.dto.MitigationResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Mitigation;
-import kr.re.dslab.threatmodeling.type.entity.MitigationAttackMapping;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class MitigationService {
 
-    private final DefendService defendService;
-
     private final MitigationRepository mitigationRepository;
 
-    private final MitigationAttackMappingService mitigationAttackMappingService;
+    private final DefendRepository defendRepository;
 
     public MitigationResponseDto getMitigationInfo(String mitigationId) {
         Mitigation mitigation = getMitigationByIdOrThrow(mitigationId);
-        List<DefendResponseDto> relatedDefendTechniques = defendService.getDefendsByMitigation(mitigation);
+        List<DefendResponseDto> relatedDefendTechniques = defendRepository.findDefendsByMitigationId(mitigationId);
         return MitigationResponseDto.of(mitigation, relatedDefendTechniques);
     }
 
-    public MitigationResponseDto getMitigation(String mitigationId) {
-        Mitigation mitigation = getMitigationById(mitigationId);
-        if (mitigation == null) {
-            return null;
-        }
-        List<DefendResponseDto> relatedDefendTechniques = defendService.getDefendsByMitigation(mitigation);
-        return MitigationResponseDto.of(mitigation, relatedDefendTechniques);
-    }
-
+    @Transactional(readOnly = true)
     public List<MitigationResponseDto> getMitigationByAttackId(String attackId) {
-        List<MitigationAttackMapping> mitigationAttackMappings = mitigationAttackMappingService.getMitigationAttackMappingsByAttackId(attackId);
-        List<Mitigation> mitigations = mitigationAttackMappings.stream()
-                .map(mitigationAttackMapping -> {
-                    String mitigationId = mitigationAttackMapping.getMitigationId();
-                    return mitigationRepository.findById(mitigationId).orElse(null);
-                })
+        List<MitigationResponseDto> mitigationDtos = mitigationRepository.findMitigationsByAttackId(attackId);
+
+        List<CompletableFuture<MitigationResponseDto>> futureMitigationDtos = mitigationDtos.stream()
+                .map(mitigationDto -> CompletableFuture.supplyAsync(() -> {
+                    List<DefendResponseDto> defends = defendRepository.findDefendsByMitigationId(mitigationDto.getMitigationId());
+                    mitigationDto.setRelatedDefendTechniques(defends);
+                    return mitigationDto;
+                }))
                 .toList();
-        return mitigations.stream()
-                .map(mitigation -> getMitigation(mitigation.getMitigationId()))
-                .toList();
+
+        return futureMitigationDtos.stream()
+                .map(CompletableFuture::join)
+                .collect(Collectors.toList());
     }
 
-    public Mitigation getMitigationByIdOrThrow(String mitigationId) {
+    private Mitigation getMitigationByIdOrThrow(String mitigationId) {
         return mitigationRepository.findById(mitigationId)
                 .orElseThrow(() -> new NotFoundException("해당하는 대응 정보가 없습니다."));
-    }
-
-    public Mitigation getMitigationById(String mitigationId) {
-        return mitigationRepository.findById(mitigationId).orElse(null);
     }
 
 }

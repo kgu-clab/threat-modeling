@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -15,27 +18,24 @@ public class CveService {
     private final CveRepository cveRepository;
 
     public List<CveResponseDto> getCveByAttackId(String attackId) {
-        List<Cve> primaryImpactCves = findCvesByPrimaryImpactContainsAttackId(attackId);
-        List<Cve> secondaryImpactCves = findCvesBySecondaryImpactContainsAttackId(attackId);
-        List<Cve> exploitationTechniqueCves = findCvesByExploitationTechniqueContainsAttackId(attackId);
-        List<Cve> uncategorizedCves = findCvesByUncategorizedContainsAttackId(attackId);
-        return CveResponseDto.of(primaryImpactCves, secondaryImpactCves, exploitationTechniqueCves, uncategorizedCves);
+        List<Cve> cves = cveRepository.findCvesByAttackId(attackId);
+        return aggregateCves(cves, attackId);
     }
 
-    public List<Cve> findCvesByPrimaryImpactContainsAttackId(String attackId) {
-        return cveRepository.findCvesByPrimaryImpactContaining(attackId);
-    }
-
-    public List<Cve> findCvesBySecondaryImpactContainsAttackId(String attackId) {
-        return cveRepository.findCvesBySecondaryImpactContaining(attackId);
-    }
-
-    public List<Cve> findCvesByExploitationTechniqueContainsAttackId(String attackId) {
-        return cveRepository.findCvesByExploitationTechniqueContaining(attackId);
-    }
-
-    public List<Cve> findCvesByUncategorizedContainsAttackId(String attackId) {
-        return cveRepository.findCvesByUncategorizedContaining(attackId);
+    private List<CveResponseDto> aggregateCves(List<Cve> cves, String attackId) {
+        return cves.parallelStream()
+                .flatMap(cve -> Stream.of(
+                        cve.getPrimaryImpact() != null && cve.getPrimaryImpact().contains(attackId) ?
+                                CveResponseDto.of(cve, "Primary Impact") : null,
+                        cve.getSecondaryImpact() != null && cve.getSecondaryImpact().contains(attackId) ?
+                                CveResponseDto.of(cve, "Secondary Impact") : null,
+                        cve.getExploitationTechnique() != null && cve.getExploitationTechnique().contains(attackId) ?
+                                CveResponseDto.of(cve, "Exploitation Technique") : null,
+                        cve.getUncategorized() != null && cve.getUncategorized().contains(attackId) ?
+                                CveResponseDto.of(cve, "Uncategorized") : null
+                ))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
 }

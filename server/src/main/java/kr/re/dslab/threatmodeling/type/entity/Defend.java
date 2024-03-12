@@ -4,8 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import kr.re.dslab.threatmodeling.type.dto.MitigationDefendDefendDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +21,9 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "defend", indexes = {
+        @Index(name = "defend_id_idx", columnList = "defendId")
+})
 public class Defend {
 
     @Id
