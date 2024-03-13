@@ -9,7 +9,7 @@ type AttackTypeType =
   | 'attack-operator'
   | 'attack-asset';
 
-interface BaseType {
+interface AttackBaseType {
   type: AttackTypeType;
   id: string;
   spec_version: string;
@@ -17,7 +17,7 @@ interface BaseType {
   modified: string;
 }
 
-interface AttackActionType extends BaseType {
+interface AttackActionType extends AttackBaseType {
   name: string;
   tactic_id: string;
   technique_id: string;
@@ -30,6 +30,6 @@ interface AttackActionType extends BaseType {
   };
 }
 
-export interface AttackFlowJsonType extends BaseType {
+export interface AttackFlowJsonType extends AttackBaseType {
   objects: Array<AttackActionType>;
 }

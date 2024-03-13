@@ -25,7 +25,7 @@ const ResultPage = () => {
   return (
     <div className="py-6">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-3xl font-bold text-center">Report</h1>
+        <h1 className="text-3xl font-bold">{t('report')}</h1>
         <Button size="sm">
           <PiFileCsv size={20} className="mr-1" /> {t('download')}
         </Button>
