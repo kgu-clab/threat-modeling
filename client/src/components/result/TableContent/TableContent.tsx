@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { mocks } from '@/mocks/mocks';
+import { useCallback, useState } from 'react';
 import { MdOutlineExpandMore } from 'react-icons/md';
 import {
   Tooltip,
@@ -8,78 +7,132 @@ import {
   TooltipTrigger,
 } from '@components/common/Tooltip/Tooltip';
 import { TableCell, TableRow } from '@components/common/Table/Table';
+import type { DefendTechniqueType, ThreatModelType } from '@type/threat';
+import { cn } from '@utils/component';
+import { Link, useLocation } from 'react-router-dom';
+import { ParsedResult } from '@utils/attack';
+
+interface TableContentProps {
+  data?: ThreatModelType;
+}
 
 interface TooltipComponentProps {
   mitigationId: string;
-  relatedDefendTechniques: { defendId: string }[];
+  mitigationUrl: string;
+  relatedDefendTechniques: DefendTechniqueType[];
 }
 
 const TooltipComponent = ({
   mitigationId,
+  mitigationUrl,
   relatedDefendTechniques,
 }: TooltipComponentProps) => (
   <Tooltip>
-    <TooltipTrigger className="text-gray-500 cursor-default hover:underline hover:text-black">
+    <TooltipTrigger className="text-gray-600 cursor-default hover:underline hover:text-black">
       {mitigationId}
     </TooltipTrigger>
     <TooltipContent>
-      <p className="mb-2 text-base font-semibold text-red-500">
+      <Link
+        to={mitigationUrl}
+        target="_blank"
+        className="text-base font-semibold text-red-500 hover:underline"
+      >
         {mitigationId}
-      </p>
-      <div className="divide-x">
-        {relatedDefendTechniques.map(({ defendId }) => (
-          <a key={defendId} className="px-2 hover:underline" href="">
-            {defendId}
-          </a>
-        ))}
-      </div>
+      </Link>
+      {relatedDefendTechniques.length > 0 && (
+        <div className="mt-1 divide-x">
+          {relatedDefendTechniques.map(({ defendId, defendUrl }) => (
+            <Link
+              key={defendId}
+              to={defendUrl}
+              target="_blank"
+              className="px-2 hover:underline"
+            >
+              {defendId}
+            </Link>
+          ))}
+        </div>
+      )}
     </TooltipContent>
   </Tooltip>
 );
 
-const TableContent = () => {
-  const [open, setOpen] = useState(false);
+const TableContent = ({ data }: TableContentProps) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const { state } = useLocation();
 
-  const handleOpen = () => setOpen((prev) => !prev);
+  state as { data: ParsedResult };
+
+  const handleOpen = useCallback(() => setOpen((prev) => !prev), []);
+
+  if (!data) return null;
 
   const controlsToShow = open
-    ? mocks.attack.data.relatedControls
-    : mocks.attack.data.relatedControls.slice(0, 1);
+    ? data.relatedControls
+    : data.relatedControls.slice(0, 1);
 
   return controlsToShow.map((control, index) => (
     <TableRow key={control.controlId}>
       {index === 0 && (
         <TableCell
           rowSpan={open ? controlsToShow.length : 1}
-          className="border-r"
+          className="text-xs border-r"
         >
-          통신 악용; 승인되지 않은 제어권 요청 생성
+          {state.data[data.attack.attackId] || '-'}
         </TableCell>
       )}
       {index === 0 && (
         <TableCell rowSpan={open ? controlsToShow.length : 1}>
-          {mocks.attack.data.attack.attackId}
+          <Link
+            to={data.attack.attackUrl}
+            target="_blank"
+            className="text-gray-600 hover:underline"
+          >
+            {data.attack.attackId}
+          </Link>
         </TableCell>
       )}
       <TableCell className="border-l">{control.controlId}</TableCell>
       <TooltipProvider>
-        <TableCell className="space-x-2">
-          {mocks.attack.data.relatedMitigations.map(
-            ({ mitigationId, relatedDefendTechniques }) => (
-              <TooltipComponent
-                key={mitigationId}
-                mitigationId={mitigationId}
-                relatedDefendTechniques={relatedDefendTechniques}
-              />
-            ),
-          )}
-        </TableCell>
+        {index === 0 && (
+          <TableCell rowSpan={open ? controlsToShow.length : 1}>
+            <div className="grid grid-cols-3 gap-2">
+              {data.relatedMitigations.map(
+                ({ mitigationId, mitigationUrl, relatedDefendTechniques }) => (
+                  <TooltipComponent
+                    key={mitigationId}
+                    mitigationId={mitigationId}
+                    mitigationUrl={mitigationUrl}
+                    relatedDefendTechniques={relatedDefendTechniques}
+                  />
+                ),
+              )}
+            </div>
+          </TableCell>
+        )}
       </TooltipProvider>
-      <TableCell className="text-nowrap">
-        {mocks.attack.data.relatedCves
-          .map(({ cveId, cvss }) => `${cveId} (${cvss})`)
-          .join(', ')}
-      </TableCell>
+      {index === 0 && (
+        <TableCell
+          rowSpan={open ? controlsToShow.length : 1}
+          className="min-w-[280px]"
+        >
+          <div
+            className={cn(
+              'grid grid-cols-2 gap-2 text-nowrap overflow-auto scrollbar-hide text-xs',
+              { 'max-h-12': !open },
+            )}
+          >
+            {data.relatedCves.length
+              ? data.relatedCves.map(({ cveId, cvss }) => (
+                  <p
+                    key={cveId}
+                    className="hover:underline"
+                  >{`${cveId} ${`(${cvss || 'N/A'})`}`}</p>
+                ))
+              : '-'}
+          </div>
+        </TableCell>
+      )}
       <TableCell>
         <button onClick={handleOpen}>
           {open === false ? (
@@ -87,7 +140,7 @@ const TableContent = () => {
           ) : index === 0 ? (
             <MdOutlineExpandMore size={24} className="rotate-180" />
           ) : (
-            '-'
+            <div className="text-xs text-gray-400">{data.attack.attackId}</div>
           )}
         </button>
       </TableCell>
