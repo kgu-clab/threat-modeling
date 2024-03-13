@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 MVC
+	implementation 'org.springframework.boot:spring-boot-starter-aop' // Spring AOP
 	implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // Spring Data JPA
 	implementation 'org.springframework.boot:spring-boot-starter-cache' // Spring Cache
