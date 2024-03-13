@@ -11,6 +11,8 @@ public class MitigationAttackAttackDto {
 
     private String attackType;
 
+    private String attackUrl;
+
     private String mappingDescription;
 
 }

@@ -13,6 +13,8 @@ public class MitigationAttackDto {
 
     private String mitigationType;
 
+    private String mitigationUrl;
+
     private List<MitigationAttackAttackDto> relatedAttackTechniques;
 
 }

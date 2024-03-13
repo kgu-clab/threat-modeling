@@ -26,6 +26,8 @@ public class Attack {
 
     private String attackType;
 
+    private String attackUrl;
+
     @Column(columnDefinition = "TEXT")
     private String mappingDescription;
 
@@ -34,6 +36,7 @@ public class Attack {
                 .attackId(mitigationAttackAttackDto.getAttackId())
                 .attackName(mitigationAttackAttackDto.getAttackName())
                 .attackType(mitigationAttackAttackDto.getAttackType())
+                .attackUrl(mitigationAttackAttackDto.getAttackUrl())
                 .mappingDescription(mitigationAttackAttackDto.getMappingDescription())
                 .build();
     }
