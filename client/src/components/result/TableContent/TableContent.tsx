@@ -10,7 +10,7 @@ import { TableCell, TableRow } from '@components/common/Table/Table';
 import type { DefendTechniqueType, ThreatModelType } from '@type/threat';
 import { cn } from '@utils/component';
 import { Link, useLocation } from 'react-router-dom';
-import { ParsedResult } from '@utils/attack';
+import { AttackFlowResultType } from '@utils/attack';
 
 interface TableContentProps {
   data?: ThreatModelType;
@@ -59,13 +59,13 @@ const TooltipComponent = ({
 
 const TableContent = ({ data }: TableContentProps) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { state } = useLocation();
+  const location = useLocation();
 
-  state as { data: ParsedResult };
+  const state = location.state as { data: AttackFlowResultType };
 
   const handleOpen = useCallback(() => setOpen((prev) => !prev), []);
 
-  if (!data) return null;
+  if (!state?.data || !data) throw new Error('Invalid state');
 
   const controlsToShow = open
     ? data.relatedControls
@@ -76,7 +76,7 @@ const TableContent = ({ data }: TableContentProps) => {
       {index === 0 && (
         <TableCell
           rowSpan={open ? controlsToShow.length : 1}
-          className="text-xs border-r"
+          className="w-10 text-xs border-r"
         >
           {state.data[data.attack.attackId] || '-'}
         </TableCell>
@@ -96,7 +96,7 @@ const TableContent = ({ data }: TableContentProps) => {
       <TooltipProvider>
         {index === 0 && (
           <TableCell rowSpan={open ? controlsToShow.length : 1}>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2 min-w-[190px]">
               {data.relatedMitigations.map(
                 ({ mitigationId, mitigationUrl, relatedDefendTechniques }) => (
                   <TooltipComponent
@@ -122,7 +122,7 @@ const TableContent = ({ data }: TableContentProps) => {
               { 'max-h-12': !open },
             )}
           >
-            {data.relatedCves.length
+            {data.relatedCves.length > 0
               ? data.relatedCves.map(({ cveId, cvss }) => (
                   <p
                     key={cveId}
