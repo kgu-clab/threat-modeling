@@ -7,11 +7,20 @@ import {
   TableRow,
 } from '@components/common/Table/Table';
 import TableContent from '@components/result/TableContent/TableContent';
+import { useAttacks } from '@hooks/useAttacks';
+import { deobfuscate } from '@utils/string';
+
 import { useTranslation } from 'react-i18next';
 import { PiFileCsv } from 'react-icons/pi';
+import { useParams } from 'react-router-dom';
 
 const ResultPage = () => {
   const { t } = useTranslation();
+  const { id } = useParams<{ id: string }>();
+
+  if (!id) throw new Error('Invalid ID');
+
+  const { data } = useAttacks(deobfuscate(id));
 
   return (
     <div className="py-6">
@@ -23,16 +32,18 @@ const ResultPage = () => {
       </div>
       <div className="overflow-auto">
         <Table className="border">
-          <TableHeader className="hover:bg-muted/50 text-nowrap">
+          <TableHeader>
             <TableRow>
               <TableHead rowSpan={2}>설명</TableHead>
               <TableHead colSpan={2}>평가지표</TableHead>
-              <TableHead rowSpan={3}>Mitigation ID (Defend ID)</TableHead>
+              <TableHead rowSpan={3} className="text-nowrap">
+                Mitigation ID (Defend ID)
+              </TableHead>
               <TableHead rowSpan={3}>CVE (CVSS)</TableHead>
               <TableHead rowSpan={3}>Function</TableHead>
             </TableRow>
             <TableRow>
-              <TableHead colSpan={2} className="border-l">
+              <TableHead colSpan={2} className="border-l text-nowrap">
                 SP 800 - 53 / MITER ATT&CK 기준 매핑
               </TableHead>
             </TableRow>
@@ -43,7 +54,9 @@ const ResultPage = () => {
             </TableRow>
           </TableHeader>
           <TableBody className="break-keep">
-            <TableContent />
+            {data?.map((attack, index) => (
+              <TableContent key={index} data={attack} />
+            ))}
           </TableBody>
         </Table>
       </div>
