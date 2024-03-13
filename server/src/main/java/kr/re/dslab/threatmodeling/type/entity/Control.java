@@ -2,7 +2,7 @@ package kr.re.dslab.threatmodeling.type.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import kr.re.dslab.threatmodeling.type.dto.ControlAttackDto;
+import kr.re.dslab.threatmodeling.type.dto.json.ControlAttackDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -3,7 +3,7 @@ package kr.re.dslab.threatmodeling.repository;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
-import kr.re.dslab.threatmodeling.type.dto.ControlResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.ControlResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.QControl;
 import kr.re.dslab.threatmodeling.type.entity.QControlAttackMapping;
 

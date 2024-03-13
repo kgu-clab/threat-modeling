@@ -4,7 +4,7 @@ package kr.re.dslab.threatmodeling.type.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import kr.re.dslab.threatmodeling.type.dto.MitigationAttackAttackDto;
+import kr.re.dslab.threatmodeling.type.dto.json.MitigationAttackAttackDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

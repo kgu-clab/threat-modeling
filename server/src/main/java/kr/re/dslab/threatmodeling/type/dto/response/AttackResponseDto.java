@@ -1,4 +1,4 @@
-package kr.re.dslab.threatmodeling.type.dto;
+package kr.re.dslab.threatmodeling.type.dto.response;
 
 import kr.re.dslab.threatmodeling.type.entity.Attack;
 import lombok.Builder;

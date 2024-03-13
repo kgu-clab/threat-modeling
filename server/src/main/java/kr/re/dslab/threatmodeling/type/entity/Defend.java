@@ -8,7 +8,7 @@ import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import kr.re.dslab.threatmodeling.type.dto.MitigationDefendDefendDto;
+import kr.re.dslab.threatmodeling.type.dto.json.MitigationDefendDefendDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
