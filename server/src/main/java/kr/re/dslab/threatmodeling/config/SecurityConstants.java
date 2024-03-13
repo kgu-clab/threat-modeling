@@ -13,12 +13,12 @@ public class SecurityConstants {
     };
 
     public static final String[] PERMIT_ALL_API_ENDPOINTS_GET = {
-            "/attacks/{attackId}",
-            "/mitigations/{mitigationId}"
+            "/api/v1/attacks/**",
+            "/api/v1/mitigations/{mitigationId}"
     };
 
     public static final String[] PERMIT_ALL_API_ENDPOINTS_POST = {
-            "/files/jsons"
+            "/api/v1/files/jsons"
     };
 
 }
