@@ -10,6 +10,7 @@ import kr.re.dslab.threatmodeling.type.dto.response.MitigationResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Attack;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -17,10 +18,12 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,6 +41,9 @@ public class AttackCacheService {
 
     private final CacheManager cacheManager;
 
+    @Qualifier("taskExecutor")
+    private final Executor taskExecutor;
+
     @Async
     @EventListener(ApplicationReadyEvent.class)
     @LogExecutionTime
@@ -48,7 +54,21 @@ public class AttackCacheService {
 
     public void getAllAttackRelatedInfo() {
         List<String> allAttackIds = attackRepository.findAllAttackIds();
-        fetchAndCacheAttackInfo(allAttackIds);
+        processInBatchesAsync(allAttackIds);
+    }
+
+    private void processInBatchesAsync(List<String> allAttackIds) {
+        int start = 0;
+        int batchSize = 50;
+        while (start < allAttackIds.size()) {
+            int end = Math.min(start + batchSize, allAttackIds.size());
+            List<String> batch = new ArrayList<>(allAttackIds.subList(start, end));
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+                fetchAndCacheAttackInfo(batch);
+            }, taskExecutor);
+            future.join();
+            start += batchSize;
+        }
     }
 
     public List<AttackRelatedResponseDto> fetchAndCacheAttackInfo(List<String> attackIds) {
