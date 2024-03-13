@@ -2,7 +2,6 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 const resources = {
-  // 영어
   English: {
     translation: {
       home: 'Home',
@@ -33,9 +32,14 @@ const resources = {
       privacyPolicy: 'Privacy Policy',
       changelog: 'Changelog',
       download: 'Download',
+      fileUploadError: 'We received an invalid file, please try again.',
+      fileUploadSuccess:
+        'We received the file successfully! Let us analyze it.',
+      fileUploadReadError:
+        'An error occurred while converting the file to JSON.',
+      loading: '🔎 Analyzing Attack Flow...',
     },
   },
-  // 한국어
   Korea: {
     translation: {
       home: '홈',
@@ -64,6 +68,10 @@ const resources = {
       privacyPolicy: '개인정보처리방침',
       changelog: '변경내역',
       download: '다운로드',
+      fileUploadError: '올바르지 않는 파일을 받았어요, 다시 시도해 주세요.',
+      fileUploadSuccess: '정상적으로 파일을 받았어요! 분석을 해볼게요.',
+      fileUploadReadError: '파일을 JSON으로 변환하는 중 오류가 발생했습니다.',
+      loading: '🔎 Attack Flow를 분석중입니다...',
     },
   },
 };
