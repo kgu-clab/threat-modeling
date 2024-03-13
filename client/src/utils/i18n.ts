@@ -5,8 +5,7 @@ const resources = {
   English: {
     translation: {
       home: 'Home',
-      guide: 'Guide',
-      example: 'Example',
+      guide: 'User Guide',
       korea: 'Korea',
       title:
         'Proactively Identify and Systematically Respond to Security Threats',
@@ -38,13 +37,13 @@ const resources = {
       fileUploadReadError:
         'An error occurred while converting the file to JSON.',
       loading: '🔎 Analyzing Attack Flow...',
+      report: 'Threat Modeling Report',
     },
   },
   Korea: {
     translation: {
       home: '홈',
-      guide: '가이드',
-      example: '예시',
+      guide: '사용자 가이드',
       korea: '한국어',
       title: '보안 위협을 미리 파악하고 체계적으로 대응해 보세요',
       subTitle:
@@ -72,6 +71,7 @@ const resources = {
       fileUploadSuccess: '정상적으로 파일을 받았어요! 분석을 해볼게요.',
       fileUploadReadError: '파일을 JSON으로 변환하는 중 오류가 발생했습니다.',
       loading: '🔎 Attack Flow를 분석중입니다...',
+      report: '위협 모델링 보고서',
     },
   },
 };

@@ -35,9 +35,6 @@ const Navbar = () => {
           <Link className={selected(PATH.GUIDE)} to={PATH.GUIDE}>
             {t('guide')}
           </Link>
-          <Link className={selected(PATH.EXAMPLE)} to={PATH.EXAMPLE}>
-            {t('example')}
-          </Link>
         </div>
         <div className="flex items-center gap-6 md:pl-4">
           <Link
