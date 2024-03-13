@@ -17,4 +17,6 @@ public class DefendResponseDto {
 
     private String defendName;
 
+    private String defendUrl;
+
 }
