@@ -22,7 +22,9 @@ public class DefendRepositoryImpl implements DefendRepositoryCustom {
 
         return queryFactory.select(Projections.constructor(DefendResponseDto.class,
                         defend.defendId,
-                        defend.defendName))
+                        defend.defendName,
+                        defend.defendUrl)
+                )
                 .from(defend)
                 .where(defend.mitigation.mitigationId.eq(mitigationId))
                 .fetch();

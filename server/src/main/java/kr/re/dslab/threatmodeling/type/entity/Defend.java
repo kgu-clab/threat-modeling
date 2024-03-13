@@ -34,6 +34,8 @@ public class Defend {
 
     private String defendName;
 
+    private String defendUrl;
+
     @ManyToOne
     @JoinColumn(name = "mitigation_id")
     private Mitigation mitigation;
@@ -42,6 +44,7 @@ public class Defend {
         return Defend.builder()
                 .defendId(defendDefendDto.getDefendId())
                 .defendName(defendDefendDto.getDefendName())
+                .defendUrl(defendDefendDto.getDefendUrl())
                 .mitigation(mitigation)
                 .build();
     }

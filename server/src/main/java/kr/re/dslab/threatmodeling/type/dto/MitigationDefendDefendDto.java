@@ -9,4 +9,6 @@ public class MitigationDefendDefendDto {
 
     private String defendName;
 
+    private String defendUrl;
+
 }
