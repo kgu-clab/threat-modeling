@@ -14,6 +14,8 @@ public class AttackResponseDto {
 
     private String attackType;
 
+    private String attackUrl;
+
     private String mappingDescription;
 
     public static AttackResponseDto of(Attack attack) {
@@ -21,6 +23,7 @@ public class AttackResponseDto {
                 .attackId(attack.getAttackId())
                 .attackName(attack.getAttackName())
                 .attackType(attack.getAttackType())
+                .attackUrl(attack.getAttackUrl())
                 .mappingDescription(attack.getMappingDescription())
                 .build();
     }

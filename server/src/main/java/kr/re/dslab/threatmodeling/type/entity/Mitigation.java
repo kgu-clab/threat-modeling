@@ -28,6 +28,8 @@ public class Mitigation {
 
     private String mitigationType;
 
+    private String mitigationUrl;
+
     @OneToMany(mappedBy = "mitigation")
     private List<Defend> relatedDefendTechniques;
 
@@ -36,6 +38,7 @@ public class Mitigation {
                 .mitigationId(mitigationAttackDto.getMitigationId())
                 .mitigationName(mitigationAttackDto.getMitigationName())
                 .mitigationType(mitigationAttackDto.getMitigationType())
+                .mitigationUrl(mitigationAttackDto.getMitigationUrl())
                 .build();
     }
 

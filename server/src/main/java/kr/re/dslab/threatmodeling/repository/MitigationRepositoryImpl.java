@@ -32,6 +32,7 @@ public class MitigationRepositoryImpl implements MitigationRepositoryCustom {
                 .map(m -> MitigationResponseDto.builder()
                         .mitigationId(m.getMitigationId())
                         .mitigationName(m.getMitigationName())
+                        .mitigationUrl(m.getMitigationUrl())
                         .build()
                 )
                 .toList();
