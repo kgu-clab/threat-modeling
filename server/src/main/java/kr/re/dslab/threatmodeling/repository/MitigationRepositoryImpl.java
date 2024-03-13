@@ -2,7 +2,7 @@ package kr.re.dslab.threatmodeling.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
-import kr.re.dslab.threatmodeling.type.dto.MitigationResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.MitigationResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Mitigation;
 import kr.re.dslab.threatmodeling.type.entity.QMitigation;
 import kr.re.dslab.threatmodeling.type.entity.QMitigationAttackMapping;
@@ -32,6 +32,7 @@ public class MitigationRepositoryImpl implements MitigationRepositoryCustom {
                 .map(m -> MitigationResponseDto.builder()
                         .mitigationId(m.getMitigationId())
                         .mitigationName(m.getMitigationName())
+                        .mitigationUrl(m.getMitigationUrl())
                         .build()
                 )
                 .toList();

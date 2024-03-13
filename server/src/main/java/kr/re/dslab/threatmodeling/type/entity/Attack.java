@@ -4,7 +4,7 @@ package kr.re.dslab.threatmodeling.type.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import kr.re.dslab.threatmodeling.type.dto.MitigationAttackAttackDto;
+import kr.re.dslab.threatmodeling.type.dto.json.MitigationAttackAttackDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +26,8 @@ public class Attack {
 
     private String attackType;
 
+    private String attackUrl;
+
     @Column(columnDefinition = "TEXT")
     private String mappingDescription;
 
@@ -34,6 +36,7 @@ public class Attack {
                 .attackId(mitigationAttackAttackDto.getAttackId())
                 .attackName(mitigationAttackAttackDto.getAttackName())
                 .attackType(mitigationAttackAttackDto.getAttackType())
+                .attackUrl(mitigationAttackAttackDto.getAttackUrl())
                 .mappingDescription(mitigationAttackAttackDto.getMappingDescription())
                 .build();
     }

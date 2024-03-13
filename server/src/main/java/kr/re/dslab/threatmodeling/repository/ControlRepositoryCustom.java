@@ -1,6 +1,6 @@
 package kr.re.dslab.threatmodeling.repository;
 
-import kr.re.dslab.threatmodeling.type.dto.ControlResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.ControlResponseDto;
 
 import java.util.List;
 

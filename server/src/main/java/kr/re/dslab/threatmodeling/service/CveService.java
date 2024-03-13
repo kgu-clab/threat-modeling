@@ -1,7 +1,7 @@
 package kr.re.dslab.threatmodeling.service;
 
 import kr.re.dslab.threatmodeling.repository.CveRepository;
-import kr.re.dslab.threatmodeling.type.dto.CveResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.CveResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Cve;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,102 +1,126 @@
 [
     {
         "mitigationId": "M1013",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1013",
         "relatedDefendTechniques": []
     },
     {
         "mitigationId": "M1015",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1015",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-ANCI",
-                "defendName": "Authentication Cache Invalidation"
+                "defendName": "Authentication Cache Invalidation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:AuthenticationCacheInvalidation/"
             },
             {
                 "defendId": "D3-DTP",
-                "defendName": "Domain Trust Policy"
+                "defendName": "Domain Trust Policy",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DomainTrustPolicy/"
             },
             {
                 "defendId": "D3-UAP",
-                "defendName": "User Account Permissions"
+                "defendName": "User Account Permissions",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:UserAccountPermissions/"
             }
         ]
     },
     {
         "mitigationId": "M1016",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1016",
         "relatedDefendTechniques": []
     },
     {
         "mitigationId": "M1017",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1017",
         "relatedDefendTechniques": []
     },
     {
         "mitigationId": "M1018",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1018",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-LFP",
-                "defendName": "Local File Pernissions"
+                "defendName": "Local File Pernissions",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:LocalFilePermissions/"
             },
             {
                 "defendId": "D3-MAC",
-                "defendName": "Madatory Access Control"
+                "defendName": "Madatory Access Control",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:MandatoryAccessControl/"
             },
             {
                 "defendId": "D3-SCP",
-                "defendName": "System Configutraion Permissions"
+                "defendName": "System Configutraion Permissions",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:SystemConfigurationPermissions/"
             }
         ]
     },
     {
         "mitigationId": "M1019",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1019",
         "relatedDefendTechniques": []
     },
     {
         "mitigationId": "M1020",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1020",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-NTA",
-                "defendName": "Network Traffic Analysis"
+                "defendName": "Network Traffic Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:NetworkTrafficAnalysis/"
             }
         ]
     },
     {
         "mitigationId": "M1021",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1021",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DNSAL",
-                "defendName": "DNS Allowlisting"
+                "defendName": "DNS Allowlisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DNSAllowlisting/"
             },
             {
                 "defendId": "D3-DNSDL",
-                "defendName": "DNS Allowlisting"
+                "defendName": "DNS Allowlisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DNSDenylisting/"
             },
             {
                 "defendId": "D3-FA",
-                "defendName": "File Analysis"
+                "defendName": "File Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:FileAnalysis/"
             },
             {
                 "defendId": "D3-ITF",
-                "defendName": "Inbound Traffic Analysis"
+                "defendName": "Inbound Traffic Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:InboundTrafficFiltering/"
             },
             {
                 "defendId": "D3-NTA",
-                "defendName": "Network Traffic Analysis"
+                "defendName": "Network Traffic Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:NetworkTrafficAnalysis/"
             },
             {
                 "defendId": "D3-OTF",
-                "defendName": "Outbound Traffic Filtering"
+                "defendName": "Outbound Traffic Filtering",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:OutboundTrafficFiltering/"
             },
             {
                 "defendId": "D3-UA",
-                "defendName": "URL Analysis"
+                "defendName": "URL Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:URLAnalysis/"
             }
         ]
     },
     {
         "mitigationId": "M1022",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1024",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-LFP",
-                "defendName": "Local File Permissions"
+                "defendName": "Local File Permissions",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:LocalFilePermissions/"
             }
         ]
     },
@@ -105,370 +129,456 @@
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-SCP",
-                "defendName": "System Configuration Permissions"
+                "defendName": "System Configuration Permissions",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:SystemConfigurationPermissions/"
             }
         ]
     },
     {
         "mitigationId": "M1025",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1025",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-BA",
-                "defendName": "Bootloader Authentication"
+                "defendName": "Bootloader Authentication",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:BootloaderAuthentication/"
             },
             {
                 "defendId": "D3-DLIC",
-                "defendName": "Driver Load ntegrity Checking"
+                "defendName": "Driver Load ntegrity Checking",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DriverLoadIntegrityChecking/"
             },
             {
                 "defendId": "D3-MAC",
-                "defendName": "Mandatory Access Control"
+                "defendName": "Mandatory Access Control",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:MandatoryAccessControl/"
             },
             {
                 "defendId": "D3-PSEP",
-                "defendName": "Process Segment Execution Prevention"
+                "defendName": "Process Segment Execution Prevention",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ProcessSegmentExecutionPrevention/"
             }
         ]
     },
     {
         "mitigationId": "M1026",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1026",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DAM",
-                "defendName": "Domain Account Monitoring"
+                "defendName": "Domain Account Monitoring",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DomainAccountMonitoring/"
             },
             {
                 "defendId": "D3-LAM",
-                "defendName": "Local Account Monitoring"
+                "defendName": "Local Account Monitoring",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:LocalAccountMonitoring/"
             },
             {
                 "defendId": "D3-SPP",
-                "defendName": "Stroung Password Policy"
+                "defendName": "Stroung Password Policy",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:StrongPasswordPolicy/"
             }
         ]
     },
     {
         "mitigationId": "M1027",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1027",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-OTP",
-                "defendName": "One-time Password"
+                "defendName": "One-time Password",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:One-timePassword/"
             },
             {
                 "defendId": "D3-SPP",
-                "defendName": "Stroung Password Policy"
+                "defendName": "Stroung Password Policy",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:StrongPasswordPolicy/"
             }
         ]
     },
     {
         "mitigationId": "M1028",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1028",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-PH",
-                "defendName": "Platform Hardening"
+                "defendName": "Platform Hardening",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:PlatformHardening/"
             }
         ]
     },
     {
         "mitigationId": "M1029",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1029",
         "relatedDefendTechniques": []
     },
     {
         "mitigationId": "M1030",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1030",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-BDI",
-                "defendName": "Broadcast Domain Isolation"
+                "defendName": "Broadcast Domain Isolation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:BroadcastDomainIsolation/"
             },
             {
                 "defendId": "D3-ET",
-                "defendName": "Encrypted Tnnels"
+                "defendName": "Encrypted Tnnels",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:EncryptedTunnels/"
             },
             {
                 "defendId": "D3-ISVA",
-                "defendName": "Inbound Session Volume Analysis"
+                "defendName": "Inbound Session Volume Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:InboundSessionVolumeAnalysis/"
             },
             {
                 "defendId": "D3-ITF",
-                "defendName": "Inbound Traffic Analysis"
+                "defendName": "Inbound Traffic Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:InboundTrafficFiltering/"
             }
         ]
     },
     {
         "mitigationId": "M1031",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1031",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-ITF",
-                "defendName": "Inbound Traffic Filtering"
+                "defendName": "Inbound Traffic Filtering",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:InboundTrafficFiltering/"
             },
             {
                 "defendId": "D3-NTA",
-                "defendName": "Network Traffic Analysis"
+                "defendName": "Network Traffic Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:NetworkTrafficAnalysis/"
             },
             {
                 "defendId": "D3-OTF",
-                "defendName": "Outbound Trffic Filtering"
+                "defendName": "Outbound Trffic Filtering",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:OutboundTrafficFiltering/"
             }
         ]
     },
     {
         "mitigationId": "M1032",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1032",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-MFA",
-                "defendName": "Multi-factor Authentication"
+                "defendName": "Multi-factor Authentication",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:Multi-factorAuthentication/"
             }
         ]
     },
     {
         "mitigationId": "M1033",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1033",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-EAL",
-                "defendName": "Executable Allowlisting"
+                "defendName": "Executable Allowlisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ExecutableAllowlisting/"
             },
             {
                 "defendId": "D3-EDL",
-                "defendName": "Executable Denylisting"
+                "defendName": "Executable Denylisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ExecutableDenylisting/"
             }
         ]
     },
     {
         "mitigationId": "M1034",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1034",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-IOPR",
-                "defendName": "IO Port Restriction"
+                "defendName": "IO Port Restriction",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:IOPortRestriction/"
             }
         ]
     },
     {
         "mitigationId": "M1035",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1035",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-NI",
-                "defendName": "Network Isolation"
+                "defendName": "Network Isolation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:NetworkIsolation/"
             }
         ]
     },
     {
         "mitigationId": "M1036",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1036",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-AL",
-                "defendName": "Account Locking"
+                "defendName": "Account Locking",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:AccountLocking/"
             },
             {
                 "defendId": "D3-ANCI",
-                "defendName": "Authentication Cache Invalidation"
+                "defendName": "Authentication Cache Invalidation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:AuthenticationCacheInvalidation/"
             },
             {
                 "defendId": "D3-ANET",
-                "defendName": "Authentication Event Thresholding"
+                "defendName": "Authentication Event Thresholding",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:AuthenticationEventThresholding/"
             }
         ]
     },
     {
         "mitigationId": "M1037",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1037",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-NI",
-                "defendName": "Network Isolation"
+                "defendName": "Network Isolation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:NetworkIsolation/"
             }
         ]
     },
     {
         "mitigationId": "M1038",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1038",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DLIC",
-                "defendName": "Driver Load Integrity Checking"
+                "defendName": "Driver Load Integrity Checking",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DriverLoadIntegrityChecking/"
             },
             {
                 "defendId": "D3-EAL",
-                "defendName": "Executable Allowlisting"
+                "defendName": "Executable Allowlisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ExecutableAllowlisting/"
             },
             {
                 "defendId": "D3-EDL",
-                "defendName": "Executable Denylisting"
+                "defendName": "Executable Denylisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ExecutableDenylisting/"
             },
             {
                 "defendId": "D3-PSEP",
-                "defendName": "Process Segment Execution Prevention"
+                "defendName": "Process Segment Execution Prevention",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ProcessSegmentExecutionPrevention/"
             }
         ]
     },
     {
         "mitigationId": "M1039",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1039",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-ACH",
-                "defendName": " Application Configuration Hardening"
+                "defendName": " Application Configuration Hardening",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ApplicationConfigurationHardening/"
             },
             {
                 "defendId": "D3-SFA",
-                "defendName": "system File Analysis"
+                "defendName": "system File Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:SystemFileAnalysis/"
             }
         ]
     },
     {
         "mitigationId": "M1040",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1040",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-ANET",
-                "defendName": "Authentication Event Thresholding"
+                "defendName": "Authentication Event Thresholding",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:AuthenticationEventThresholding/"
             },
             {
                 "defendId": "D3-AZET",
-                "defendName": "Authorizaion Event thresholding"
+                "defendName": "Authorizaion Event thresholding",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:AuthorizationEventThresholding/"
             },
             {
                 "defendId": "D3-JFAPA",
-                "defendName": "Job Function Access Pattern Analysis"
+                "defendName": "Job Function Access Pattern Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:JobFunctionAccessPatternAnalysis/"
             },
             {
                 "defendId": "D3-RAPA",
-                "defendName": "Resource access Pattern Analysis"
+                "defendName": "Resource access Pattern Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ResourceAccessPatternAnalysis/"
             },
             {
                 "defendId": "D3-SDA",
-                "defendName": "Session Duraion Analysis"
+                "defendName": "Session Duraion Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:SessionDurationAnalysis/"
             },
             {
                 "defendId": "D3-UDTA",
-                "defendName": "User Data Transfer Analysis"
+                "defendName": "User Data Transfer Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:UserDataTransferAnalysis/"
             },
             {
                 "defendId": "D3-UGLPA",
-                "defendName": "User Geolocation logon Pattern Analysis"
+                "defendName": "User Geolocation logon Pattern Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:UserGeolocationLogonPatternAnalysis/"
             },
             {
                 "defendId": "D3-WSAA",
-                "defendName": "Web Session Activity Analysis"
+                "defendName": "Web Session Activity Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:WebSessionActivityAnalysis/"
             }
         ]
     },
     {
         "mitigationId": "M1041",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1041",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DENCR",
-                "defendName": "Disk Encryption"
+                "defendName": "Disk Encryption",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DiskEncryption/"
             },
             {
                 "defendId": "D3-ET",
-                "defendName": "Encryped Tunnels"
+                "defendName": "Encryped Tunnels",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:EncryptedTunnels/"
             },
             {
                 "defendId": "D3-FE",
-                "defendName": "File encryption"
+                "defendName": "File encryption",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:FileEncryption/"
             },
             {
                 "defendId": "D3-MENCR",
-                "defendName": "Message Encryption"
+                "defendName": "Message Encryption",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:MessageEncryption/"
             }
         ]
     },
     {
         "mitigationId": "M1042",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1042",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-ACH",
-                "defendName": "Application Configuration Hardening"
+                "defendName": "Application Configuration Hardening",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ApplicationConfigurationHardening/"
             },
             {
                 "defendId": "D3-EDL",
-                "defendName": "Executable Denylisting"
+                "defendName": "Executable Denylisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ExecutableDenylisting/"
             },
             {
                 "defendId": "D3-MAC",
-                "defendName": "Mandatory Access Control"
+                "defendName": "Mandatory Access Control",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:MandatoryAccessControl/"
             }
         ]
     },
     {
         "mitigationId": "M1043",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1043",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-HBPI",
-                "defendName": "Hardware-based Process Isolation"
+                "defendName": "Hardware-based Process Isolation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:Hardware-basedProcessIsolation/"
             }
         ]
     },
     {
         "mitigationId": "M1044",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1044",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-SCF",
-                "defendName": "System Call Filtering"
+                "defendName": "System Call Filtering",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:Hardware-basedProcessIsolation/"
             }
         ]
     },
     {
         "mitigationId": "M1045",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1045",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DLIC",
-                "defendName": "Driver Load Integrity Checking"
+                "defendName": "Driver Load Integrity Checking",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DriverLoadIntegrityChecking/"
             },
             {
                 "defendId": "D3-EAL",
-                "defendName": "Executable Allowlisting"
+                "defendName": "Executable Allowlisting",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ExecutableAllowlisting/"
             },
             {
                 "defendId": "D3-SBV",
-                "defendName": "Service Binary Integrity"
+                "defendName": "Service Binary Integrity",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:ServiceBinaryVerification/"
             }
         ]
     },
     {
         "mitigationId": "M1046",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1046",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-BA",
-                "defendName": "Bootloader Authentication"
+                "defendName": "Bootloader Authentication",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:BootloaderAuthentication/"
             },
             {
                 "defendId": "D3-TBI",
-                "defendName": "TPM Boot Integriy"
+                "defendName": "TPM Boot Integriy",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:TPMBootIntegrity/"
             }
         ]
     },
     {
         "mitigationId": "M1047",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1047",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DAM",
-                "defendName": "Domain Account Monitoring"
+                "defendName": "Domain Account Monitoring",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DomainAccountMonitoring/"
             },
             {
                 "defendId": "D3-LAM",
-                "defendName": "Local Account Monitoring"
+                "defendName": "Local Account Monitoring",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:LocalAccountMonitoring/"
             },
             {
                 "defendId": "D3-SFA",
-                "defendName": "system File Analysis"
+                "defendName": "system File Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:SystemFileAnalysis/"
             }
         ]
     },
     {
         "mitigationId": "M1048",
+        "mitigationUrl": "https://attack.mitre.org/mitigations/M1048",
         "relatedDefendTechniques": [
             {
                 "defendId": "D3-DA",
-                "defendName": "Dynamic Analysis"
+                "defendName": "Dynamic Analysis",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:DynamicAnalysis/"
             },
             {
                 "defendId": "D3-HBPI",
-                "defendName": "Hardware-based Process Isolation"
+                "defendName": "Hardware-based Process Isolation",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:Hardware-basedProcessIsolation/"
             },
             {
                 "defendId": "D3-MAC",
-                "defendName": "Mandatory Access Control"
+                "defendName": "Mandatory Access Control",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:MandatoryAccessControl/"
             },
             {
                 "defendId": "D3-SCF",
-                "defendName": "System Call Filtering"
+                "defendName": "System Call Filtering",
+                "defendUrl": "https://d3fend.mitre.org/technique/d3f:Hardware-basedProcessIsolation/"
             }
         ]
     }
