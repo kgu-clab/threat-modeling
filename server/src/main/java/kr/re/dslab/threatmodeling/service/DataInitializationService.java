@@ -23,16 +23,17 @@ import kr.re.dslab.threatmodeling.type.entity.Defend;
 import kr.re.dslab.threatmodeling.type.entity.Mitigation;
 import kr.re.dslab.threatmodeling.type.entity.MitigationAttackMapping;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DataInitializationService {
 
     private final MitigationRepository mitigationRepository;
@@ -56,13 +57,17 @@ public class DataInitializationService {
     @PostConstruct
     public void initDatabase() {
         try {
+            log.info("Initializing database");
+            long start = System.currentTimeMillis();
             initializeMitigationsAndAttacks();
             initializeControlsAndControlAttackMappings();
             initializeMitigationsAndDefends();
             initializeCves();
-            System.out.println("데이터 초기화 완료");
+            long end = System.currentTimeMillis();
+            log.info("Database initialized successfully");
+            log.info("Database initialization took {} ms", end - start);
         } catch (IOException e) {
-            System.out.println("데이터 초기화 실패: " + e.getMessage());
+            log.error("Failed to initialize database", e);
         }
     }
 
@@ -78,39 +83,35 @@ public class DataInitializationService {
 
     private void saveMitigationAndAttacks(MitigationAttackDto mitigationAttackDto) {
         Mitigation mitigation = Mitigation.of(mitigationAttackDto);
-        List<Attack> attacks = mitigationAttackDto.getRelatedAttackTechniques().stream()
-                .map(attackDto -> {
-                    Attack attack = Attack.of(attackDto);
-                    return attackRepository.save(attack);
-                })
-                .toList();
         mitigationRepository.save(mitigation);
-        attacks.forEach(attack -> {
-            MitigationAttackMapping mitigationAttackMapping = MitigationAttackMapping.builder()
-                    .mitigationId(mitigation.getMitigationId())
-                    .attackId(attack.getAttackId())
-                    .build();
-            mitigationAttackMappingRepository.save(mitigationAttackMapping);
-        });
+        List<Attack> attacks = mitigationAttackDto.getRelatedAttackTechniques().stream()
+                .map(Attack::of)
+                .toList();
+        attackRepository.saveAll(attacks);
+        List<MitigationAttackMapping> mitigationAttackMappings = attacks.stream()
+                .map(attack -> MitigationAttackMapping.builder()
+                        .mitigationId(mitigation.getMitigationId())
+                        .attackId(attack.getAttackId())
+                        .build())
+                .toList();
+        mitigationAttackMappingRepository.saveAll(mitigationAttackMappings);
     }
 
     public void initializeControlsAndControlAttackMappings() throws IOException {
         List<ControlAttackDto> controlAttackDtos = loadEntitiesFromJson("classpath:controlAttackRelation.json", new TypeReference<>() {});
         controlAttackDtos
-                        .forEach(controlAttackDto -> {
+                .forEach(controlAttackDto -> {
                             Control control = controlRepository.save(controlAttackDto.getControl());
                             List<ControlAttackAttackDto> controlAttackAttackDtos = controlAttackDto.getRelatedAttackTechniques();
-                            controlAttackAttackDtos
-                                 .forEach(controlAttackAttackDto -> {
-                                     ControlAttackMapping controlAttackMapping =
-                                             ControlAttackMapping.builder()
-                                                 .controlId(control.getControlId())
-                                                 .attackId(controlAttackAttackDto.getAttackId())
-                                                 .build();
-                                     controlAttackMappingRepository.save(controlAttackMapping);
-                                 });
+                            List<ControlAttackMapping> controlAttackMappings = controlAttackAttackDtos.stream()
+                                    .map(controlAttackAttackDto -> ControlAttackMapping.builder()
+                                            .controlId(control.getControlId())
+                                            .attackId(controlAttackAttackDto.getAttackId())
+                                            .build())
+                                    .toList();
+                            controlAttackMappingRepository.saveAll(controlAttackMappings);
                         }
-        );
+                );
     }
 
     private void initializeMitigationsAndDefends() throws IOException {
@@ -123,11 +124,9 @@ public class DataInitializationService {
         Mitigation mitigation = mitigationRepository.findById(mitigationDefendDto.getMitigationId())
                 .orElseThrow(() -> new NotFoundException("Mitigation not found"));
         List<Defend> defends = mitigationDefendDto.getRelatedDefendTechniques().stream()
-                .map(defendDto -> {
-                    Defend defend = Defend.of(defendDto, mitigation);
-                    return defendRepository.save(defend);
-                })
-                .collect(Collectors.toList());
+                .map(defendDto -> Defend.of(defendDto, mitigation))
+                .toList();
+        defendRepository.saveAll(defends);
         mitigation.setRelatedDefendTechniques(defends);
         return mitigation;
     }
