@@ -9,6 +9,7 @@ public class SecurityConstants {
             "/configuration/security",
             "/webjars/**",
             "/error",
+            "/favicon.ico",
             "/"
     };
 
