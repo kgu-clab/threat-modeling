@@ -2,11 +2,11 @@ package kr.re.dslab.threatmodeling.service;
 
 import kr.re.dslab.threatmodeling.annotation.LogExecutionTime;
 import kr.re.dslab.threatmodeling.repository.AttackRepository;
-import kr.re.dslab.threatmodeling.type.dto.AttackRelatedResponseDto;
-import kr.re.dslab.threatmodeling.type.dto.AttackResponseDto;
-import kr.re.dslab.threatmodeling.type.dto.ControlResponseDto;
-import kr.re.dslab.threatmodeling.type.dto.CveResponseDto;
-import kr.re.dslab.threatmodeling.type.dto.MitigationResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.AttackRelatedResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.AttackResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.ControlResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.CveResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.MitigationResponseDto;
 import kr.re.dslab.threatmodeling.type.entity.Attack;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

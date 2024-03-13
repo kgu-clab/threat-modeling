@@ -1,6 +1,6 @@
 package kr.re.dslab.threatmodeling.service;
 
-import kr.re.dslab.threatmodeling.type.dto.AttackRelatedResponseDto;
+import kr.re.dslab.threatmodeling.type.dto.response.AttackRelatedResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

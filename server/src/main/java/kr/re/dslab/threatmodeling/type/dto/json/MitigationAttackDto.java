@@ -1,5 +1,6 @@
-package kr.re.dslab.threatmodeling.type.dto;
+package kr.re.dslab.threatmodeling.type.dto.json;
 
+import kr.re.dslab.threatmodeling.type.dto.json.MitigationAttackAttackDto;
 import lombok.Data;
 
 import java.util.List;
