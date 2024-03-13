@@ -8,7 +8,7 @@ import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import kr.re.dslab.threatmodeling.type.dto.MitigationDefendDefendDto;
+import kr.re.dslab.threatmodeling.type.dto.json.MitigationDefendDefendDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,6 +34,8 @@ public class Defend {
 
     private String defendName;
 
+    private String defendUrl;
+
     @ManyToOne
     @JoinColumn(name = "mitigation_id")
     private Mitigation mitigation;
@@ -42,6 +44,7 @@ public class Defend {
         return Defend.builder()
                 .defendId(defendDefendDto.getDefendId())
                 .defendName(defendDefendDto.getDefendName())
+                .defendUrl(defendDefendDto.getDefendUrl())
                 .mitigation(mitigation)
                 .build();
     }

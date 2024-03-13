@@ -1,4 +1,4 @@
-package kr.re.dslab.threatmodeling.type.dto;
+package kr.re.dslab.threatmodeling.type.dto.json;
 
 import lombok.Data;
 
@@ -10,6 +10,8 @@ public class MitigationAttackAttackDto {
     private String attackName;
 
     private String attackType;
+
+    private String attackUrl;
 
     private String mappingDescription;
 

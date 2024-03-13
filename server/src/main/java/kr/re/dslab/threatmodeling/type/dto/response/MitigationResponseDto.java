@@ -1,4 +1,4 @@
-package kr.re.dslab.threatmodeling.type.dto;
+package kr.re.dslab.threatmodeling.type.dto.response;
 
 import kr.re.dslab.threatmodeling.type.entity.Mitigation;
 import lombok.AllArgsConstructor;
@@ -20,12 +20,15 @@ public class MitigationResponseDto {
 
     private String mitigationName;
 
+    private String mitigationUrl;
+
     private List<DefendResponseDto> relatedDefendTechniques;
 
     public static MitigationResponseDto of(Mitigation mitigation, List<DefendResponseDto> relatedDefendTechniques) {
         return MitigationResponseDto.builder()
                 .mitigationId(mitigation.getMitigationId())
                 .mitigationName(mitigation.getMitigationName())
+                .mitigationUrl(mitigation.getMitigationUrl())
                 .relatedDefendTechniques(relatedDefendTechniques)
                 .build();
     }
