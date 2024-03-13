@@ -1,5 +1,6 @@
 package kr.re.dslab.threatmodeling.service;
 
+import kr.re.dslab.threatmodeling.annotation.LogExecutionTime;
 import kr.re.dslab.threatmodeling.repository.AttackRepository;
 import kr.re.dslab.threatmodeling.type.dto.AttackRelatedResponseDto;
 import kr.re.dslab.threatmodeling.type.dto.AttackResponseDto;
@@ -39,10 +40,10 @@ public class AttackCacheService {
 
     @Async
     @EventListener(ApplicationReadyEvent.class)
+    @LogExecutionTime
     public void cacheAllAttackRelatedInfoOnStartup() {
         log.info("Caching all attack related info on startup");
         getAllAttackRelatedInfo();
-        log.info("Caching all attack related info on startup completed");
     }
 
     public void getAllAttackRelatedInfo() {
