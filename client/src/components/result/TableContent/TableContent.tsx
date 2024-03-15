@@ -77,7 +77,7 @@ const TableContent = ({ data }: TableContentProps) => {
       {index === 0 && (
         <TableCell
           rowSpan={open ? controlsToShow.length : 1}
-          className="w-10 border-r"
+          className="border-r "
         >
           {state.data[data.attack.attackId] || '-'}
         </TableCell>
@@ -88,7 +88,7 @@ const TableContent = ({ data }: TableContentProps) => {
           <Link
             to={data.attack.attackUrl}
             target="_blank"
-            className="text-gray-600 hover:underline"
+            className="text-gray-600 hover:underline hover:text-black"
           >
             {data.attack.attackId}
           </Link>
@@ -135,7 +135,7 @@ const TableContent = ({ data }: TableContentProps) => {
                   <Link
                     key={cveId}
                     to={`https://nvd.nist.gov/vuln/detail/${cveId}`}
-                    className="text-gray-600 hover:underline"
+                    className="text-gray-600 hover:underline hover:text-black"
                     target="_blank"
                   >{`${cveId} ${`(${cvss || 'N/A'})`}`}</Link>
                 ))
