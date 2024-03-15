@@ -1,4 +1,4 @@
-interface AttackType {
+export interface AttackType {
   attackId: string;
   attackName: string;
   attackType: 'technique' | 'tactic' | 'procedure';
@@ -6,12 +6,12 @@ interface AttackType {
   mappingDescription: string;
 }
 
-interface ControlType {
+export interface ControlType {
   controlId: string;
   controlName: string;
 }
 
-interface MitigationType {
+export interface MitigationType {
   mitigationId: string;
   mitigationName: string;
   mitigationUrl: string;
@@ -24,7 +24,7 @@ export interface DefendTechniqueType {
   defendUrl: string;
 }
 
-interface CVEType {
+export interface CVEType {
   cveId: string;
   cvss: number | null;
   phase: string;
@@ -36,4 +36,12 @@ export interface ThreatModelType {
   relatedControls: ControlType[];
   relatedMitigations: MitigationType[];
   relatedCves: CVEType[];
+}
+
+export interface ReportModelType {
+  level6: string;
+  techniqueId: string;
+  controlId: ControlType[];
+  mitigationId: MitigationType[];
+  cve: CVEType[];
 }
