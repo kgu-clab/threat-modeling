@@ -73,14 +73,16 @@ const TableContent = ({ data }: TableContentProps) => {
 
   return controlsToShow.map((control, index) => (
     <TableRow key={control.controlId}>
+      {/* Level.6 */}
       {index === 0 && (
         <TableCell
           rowSpan={open ? controlsToShow.length : 1}
-          className="w-10 text-xs border-r"
+          className="w-10 border-r"
         >
           {state.data[data.attack.attackId] || '-'}
         </TableCell>
       )}
+      {/* Technique ID */}
       {index === 0 && (
         <TableCell rowSpan={open ? controlsToShow.length : 1}>
           <Link
@@ -92,7 +94,11 @@ const TableContent = ({ data }: TableContentProps) => {
           </Link>
         </TableCell>
       )}
+      {/* Control ID */}
       <TableCell className="border-l">{control.controlId}</TableCell>
+      {/* Control Name */}
+      <TableCell>{control.controlName}</TableCell>
+      {/* Mitigation */}
       <TooltipProvider>
         {index === 0 && (
           <TableCell rowSpan={open ? controlsToShow.length : 1}>
@@ -111,6 +117,7 @@ const TableContent = ({ data }: TableContentProps) => {
           </TableCell>
         )}
       </TooltipProvider>
+      {/* CVE */}
       {index === 0 && (
         <TableCell
           rowSpan={open ? controlsToShow.length : 1}
@@ -118,21 +125,25 @@ const TableContent = ({ data }: TableContentProps) => {
         >
           <div
             className={cn(
-              'grid grid-cols-2 gap-2 text-nowrap overflow-auto scrollbar-hide text-xs',
+              'grid text-nowrap overflow-auto scrollbar-hide text-xs',
+              { 'grid-cols-2 gap-2': data.relatedCves.length > 0 },
               { 'max-h-12': !open },
             )}
           >
             {data.relatedCves.length > 0
               ? data.relatedCves.map(({ cveId, cvss }) => (
-                  <p
+                  <Link
                     key={cveId}
-                    className="hover:underline"
-                  >{`${cveId} ${`(${cvss || 'N/A'})`}`}</p>
+                    to={`https://nvd.nist.gov/vuln/detail/${cveId}`}
+                    className="text-gray-600 hover:underline"
+                    target="_blank"
+                  >{`${cveId} ${`(${cvss || 'N/A'})`}`}</Link>
                 ))
               : '-'}
           </div>
         </TableCell>
       )}
+      {/* Action */}
       <TableCell>
         <button onClick={handleOpen}>
           {open === false ? (
