@@ -1,4 +1,3 @@
-import { Button } from '@components/common/Button/Button';
 import {
   Table,
   TableBody,
@@ -6,12 +5,13 @@ import {
   TableHeader,
   TableRow,
 } from '@components/common/Table/Table';
+import CSVDownloadButton from '@components/result/CSVDownloadButton/CSVDownloadButton';
 import TableContent from '@components/result/TableContent/TableContent';
 import { useAttacks } from '@hooks/useAttacks';
+
 import { deobfuscate } from '@utils/string';
 
 import { useTranslation } from 'react-i18next';
-import { PiFileCsv } from 'react-icons/pi';
 import { useParams } from 'react-router-dom';
 
 const ResultPage = () => {
@@ -26,9 +26,7 @@ const ResultPage = () => {
     <div className="py-6">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-bold">{t('report')}</h1>
-        <Button size="sm">
-          <PiFileCsv size={20} className="mr-1" /> {t('download')}
-        </Button>
+        <CSVDownloadButton data={data} />
       </div>
       <div className="overflow-auto">
         <Table className="border">
