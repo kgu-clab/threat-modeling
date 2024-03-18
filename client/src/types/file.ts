@@ -1,3 +1,5 @@
+import type { keyValueType } from './common';
+
 type AttackTypeType =
   | 'bundle'
   | 'extension-definition'
@@ -24,9 +26,7 @@ export interface AttackActionType extends AttackBaseType {
   description: string;
   effect_refs: string[];
   extensions: {
-    [key: string]: {
-      [key: string]: string;
-    };
+    [key: string]: keyValueType;
   };
 }
 
