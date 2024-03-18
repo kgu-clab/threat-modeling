@@ -10,7 +10,7 @@ import { LuLoader2 } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
 import { PATH_FINDER } from '@constants/path';
 import { obfuscate } from '@utils/string';
-import { parserAttackFlow } from '@utils/attack';
+import { parserAttackFlow } from '@utils/model';
 
 const Dropzone = () => {
   const { t } = useTranslation();
@@ -58,7 +58,6 @@ const Dropzone = () => {
             toast.error(t('fileUploadReadError'));
           }
         };
-
         reader.readAsText(originFile);
       }
     },

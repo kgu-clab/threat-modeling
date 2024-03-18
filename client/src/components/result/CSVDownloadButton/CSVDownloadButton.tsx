@@ -1,7 +1,10 @@
 import { Button } from '@components/common/Button/Button';
 import { CSV_HEADER } from '@constants/header';
-import type { ReportModelType, ThreatModelType } from '@type/model';
-import { type AttackFlowResultType } from '@utils/attack';
+import type {
+  AttackFlowResultType,
+  ReportModelType,
+  ThreatModelType,
+} from '@type/model';
 import { escapeCSV, formatCves, formatMitigations } from '@utils/string';
 import { useTranslation } from 'react-i18next';
 import { PiFileCsv } from 'react-icons/pi';

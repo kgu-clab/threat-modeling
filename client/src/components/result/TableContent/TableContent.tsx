@@ -10,7 +10,7 @@ import { TableCell, TableRow } from '@components/common/Table/Table';
 import type { DefendTechniqueType, ThreatModelType } from '@type/model';
 import { cn } from '@utils/component';
 import { Link, useLocation } from 'react-router-dom';
-import { AttackFlowResultType } from '@utils/attack';
+import { AttackFlowResultType } from '@utils/model';
 
 interface TableContentProps {
   data?: ThreatModelType;

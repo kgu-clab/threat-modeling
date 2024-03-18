@@ -1,3 +1,7 @@
+export interface AttackFlowResultType {
+  [techniqueId: string]: string[];
+}
+
 export interface AttackType {
   attackId: string;
   attackName: string;

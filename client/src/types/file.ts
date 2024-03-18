@@ -1,3 +1,5 @@
+import type { keyValueType } from './common';
+
 type AttackTypeType =
   | 'bundle'
   | 'extension-definition'
@@ -17,16 +19,14 @@ interface AttackBaseType {
   modified: string;
 }
 
-interface AttackActionType extends AttackBaseType {
+export interface AttackActionType extends AttackBaseType {
   name: string;
   tactic_id: string;
   technique_id: string;
   description: string;
   effect_refs: string[];
   extensions: {
-    [key: string]: {
-      [key: string]: string;
-    };
+    [key: string]: keyValueType;
   };
 }
 
