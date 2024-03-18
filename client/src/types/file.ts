@@ -17,7 +17,7 @@ interface AttackBaseType {
   modified: string;
 }
 
-interface AttackActionType extends AttackBaseType {
+export interface AttackActionType extends AttackBaseType {
   name: string;
   tactic_id: string;
   technique_id: string;
