@@ -45,6 +45,11 @@ const resources = {
       agreeQuestion: 'Do you agree to the terms and conditions?',
       agree: 'Agree',
       cancel: 'Cancel',
+      error: 'Sorry for the inconvenience. An error has occurred.',
+      errorDescription:
+        'If the same problem continues to occur, please contact us.',
+      inquiry: 'Contact Us',
+      goToBack: 'Go to Home',
     },
   },
   Korea: {
@@ -85,6 +90,11 @@ const resources = {
       agreeQuestion: '이용 약관에 동의하십니까?',
       agree: '동의',
       cancel: '취소',
+      error: '죄송합니다. 오류가 발생했습니다.',
+      errorDescription:
+        ' 만약 같은 문제가 지속적으로 발생할 경우 문의 해주시기 바랍니다.',
+      inquiry: '문의하러가기',
+      goToBack: '홈으로 가기',
     },
   },
 };
