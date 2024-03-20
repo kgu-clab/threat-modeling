@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import pkg from '../../../../package.json';
+import { PATH } from '@constants/path';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -19,13 +20,14 @@ const Footer = () => {
       </ul>
       <ul className="text-xs leading-relaxed">
         <li className="space-x-2 divide-x">
-          <Link to="" className="hover:underline">
+          <Link to={PATH.TERMS_OF_USE} className="hover:underline">
             {t('termsOfUse')}
           </Link>
-          <Link to="" className="pl-2 hover:underline">
-            {t('privacyPolicy')}
-          </Link>
-          <Link to="" className="pl-2 hover:underline">
+          <Link
+            to="https://github.com/KGU-C-Lab/threat-modeling"
+            className="pl-2 hover:underline"
+            target="_blank"
+          >
             {t('changelog')}
           </Link>
         </li>
