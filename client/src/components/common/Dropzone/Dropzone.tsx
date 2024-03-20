@@ -11,10 +11,12 @@ import { useNavigate } from 'react-router-dom';
 import { PATH_FINDER } from '@constants/path';
 import { obfuscate } from '@utils/string';
 import { parserAttackFlow } from '@utils/model';
+import { useFileMutation } from '@hooks/useFileMutation';
 
 const Dropzone = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { fileMutate } = useFileMutation();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -23,6 +25,7 @@ const Dropzone = () => {
       const originFile = acceptedFiles[0];
 
       if (!originFile) {
+        // 파일이 없을 경우, 에러 메시지 출력
         return toast.error(t('fileUploadError'));
       } else {
         const reader = new FileReader();
@@ -32,7 +35,7 @@ const Dropzone = () => {
 
           try {
             const json: AttackFlowJsonType = JSON.parse(fileText as string);
-
+            // Attack Flow JSON 파일 형식 검증
             if (json.type !== 'bundle') {
               return toast.error(t('fileUploadError'));
             } else {
@@ -48,7 +51,9 @@ const Dropzone = () => {
                   .sort(),
               ),
             );
-            // 분석 데이터를 암호화하여 URL로 전달
+            // 분석 파일을 서버에 저장
+            fileMutate(originFile);
+            // 분석 데이터를 암호화하여 URL로 전달, 분석 결과 페이지로 이동
             navigate(PATH_FINDER.RESULT(obfuscate(techniqueIDList.join(','))), {
               state: {
                 data: parserAttackFlow(json),
@@ -61,7 +66,7 @@ const Dropzone = () => {
         reader.readAsText(originFile);
       }
     },
-    [navigate, t],
+    [fileMutate, navigate, t],
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
