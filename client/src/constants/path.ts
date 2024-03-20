@@ -3,6 +3,7 @@ export const PATH = {
   HOME: '/',
   GUIDE: '/guide',
   RESULT: '/result/:id',
+  TERMS_OF_USE: '/terms-of-use',
 } as const;
 
 export const PATH_FINDER = {

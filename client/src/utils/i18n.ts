@@ -36,8 +36,15 @@ const resources = {
         'We received the file successfully! Let us analyze it.',
       fileUploadReadError:
         'An error occurred while converting the file to JSON.',
+      fileUploadTermsError:
+        'You must accept the Terms of Use to use the service.',
       loading: '🔎 Analyzing Attack Flow...',
       report: 'Threat Modeling Report',
+      agreeInformation:
+        'You have the right to refuse consent to the terms and conditions above. If consent is not given, access to the service will be restricted.',
+      agreeQuestion: 'Do you agree to the terms and conditions?',
+      agree: 'Agree',
+      cancel: 'Cancel',
     },
   },
   Korea: {
@@ -70,8 +77,14 @@ const resources = {
       fileUploadError: '올바르지 않는 파일을 받았어요, 다시 시도해 주세요.',
       fileUploadSuccess: '정상적으로 파일을 받았어요! 분석을 해볼게요.',
       fileUploadReadError: '파일을 JSON으로 변환하는 중 오류가 발생했습니다.',
+      fileUploadTermsError: '이용약관에 동의해야 서비스 이용이 가능합니다.',
       loading: '🔎 Attack Flow를 분석중입니다...',
       report: '위협 모델링 보고서',
+      agreeInformation:
+        '위 이용약관에 대한 동의를 거부할 권리가 있으며, 동의 거부시에는 해당 서비스 이용이 제한됩니다.',
+      agreeQuestion: '이용 약관에 동의하십니까?',
+      agree: '동의',
+      cancel: '취소',
     },
   },
 };
