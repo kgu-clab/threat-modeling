@@ -4,6 +4,7 @@ import { PATH } from '@constants/path';
 import MainPage from '@pages/HomePage/HomePage';
 import ResultPage from '@pages/ResultPage/ResultPage';
 import GuidePage from '@pages/GuidePage/GuidePage';
+import TermsOfUsePage from '@pages/TermsOfUsePage/TermsOfUsePage';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -23,10 +24,15 @@ const Router = () => {
           path: PATH.RESULT,
           element: <ResultPage />,
         },
+        {
+          path: PATH.TERMS_OF_USE,
+          element: <TermsOfUsePage />,
+        },
       ],
     },
   ]);
 
   return <RouterProvider router={router} />;
 };
+
 export default Router;
