@@ -1,4 +1,4 @@
-import { NOTION } from '@constants/api';
+import { END_POINT, NOTION } from '@constants/api';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BlockMapType, NotionRenderer } from 'react-notion';
@@ -6,9 +6,11 @@ import { BlockMapType, NotionRenderer } from 'react-notion';
 const GuidePage = () => {
   const { t } = useTranslation();
   const [data, setData] = useState<BlockMapType>({});
-
+  /**
+   * 노션 데이터를 가져옵니다.
+   */
   useEffect(() => {
-    fetch(`https://notion-api.splitbee.io/v1/page/${NOTION.GUIDE}`)
+    fetch(END_POINT.NOTION(NOTION.GUIDE))
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
