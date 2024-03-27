@@ -6,6 +6,8 @@ import ResultPage from '@pages/ResultPage/ResultPage';
 import GuidePage from '@pages/GuidePage/GuidePage';
 import TermsOfUsePage from '@pages/TermsOfUsePage/TermsOfUsePage';
 import ErrorPage from '@pages/ErrorPage/ErrorPage';
+import { Suspense } from 'react';
+import ResultPageSkeleton from '@pages/ResultPage/ResultPageSkeleton';
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -24,7 +26,11 @@ const Router = () => {
         },
         {
           path: PATH.RESULT,
-          element: <ResultPage />,
+          element: (
+            <Suspense fallback={<ResultPageSkeleton />}>
+              <ResultPage />
+            </Suspense>
+          ),
         },
         {
           path: PATH.TERMS_OF_USE,
