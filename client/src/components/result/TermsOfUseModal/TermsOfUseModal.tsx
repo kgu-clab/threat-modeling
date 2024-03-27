@@ -1,6 +1,6 @@
-import { NOTION } from '@constants/api';
+import { END_POINT, NOTION } from '@constants/api';
 import { LOCAL_STORAGE_KEY } from '@constants/key';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NotionRenderer, type BlockMapType } from 'react-notion';
 
@@ -12,14 +12,25 @@ interface TermsOfUseModalProps {
 const TermsOfUseModal = ({ isOpen, setIsOpen }: TermsOfUseModalProps) => {
   const { t } = useTranslation();
   const [data, setData] = useState<BlockMapType>({});
-
-  const handleOpen = (value: boolean) => {
-    if (value) localStorage.setItem(LOCAL_STORAGE_KEY.AGREE, value.toString());
+  /**
+   * 약관 동의 거절 이벤트
+   */
+  const handleCancel = useCallback(() => {
+    localStorage.removeItem(LOCAL_STORAGE_KEY.AGREE);
     setIsOpen(false);
-  };
-
+  }, [setIsOpen]);
+  /**
+   * 약관 동의 이벤트
+   */
+  const handleAgree = useCallback(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY.AGREE, new Date().toISOString());
+    setIsOpen(false);
+  }, [setIsOpen]);
+  /**
+   * 노션 데이터를 가져옵니다.
+   */
   useEffect(() => {
-    fetch(`https://notion-api.splitbee.io/v1/page/${NOTION.TERMS_OF_USE}`)
+    fetch(END_POINT.NOTION(NOTION.TERMS_OF_USE))
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -42,13 +53,13 @@ const TermsOfUseModal = ({ isOpen, setIsOpen }: TermsOfUseModalProps) => {
         <div className="space-x-2 text-sm font-semibold text-center">
           <button
             className="text-gray-500 border rounded px-2 py-0.5"
-            onClick={() => handleOpen(false)}
+            onClick={handleCancel}
           >
             {t('cancel')}
           </button>
           <button
             className="border rounded px-2 py-0.5 bg-black text-white"
-            onClick={() => handleOpen(true)}
+            onClick={handleAgree}
           >
             {t('agree')}
           </button>

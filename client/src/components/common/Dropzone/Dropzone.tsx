@@ -13,16 +13,24 @@ import { obfuscate } from '@utils/string';
 import { parserAttackFlow } from '@utils/model';
 import { useFileMutation } from '@hooks/useFileMutation';
 import TermsOfUseModal from '@components/result/TermsOfUseModal/TermsOfUseModal';
-import { ENVIRONMENT_MODE } from '@constants/environment';
 import { LOCAL_STORAGE_KEY } from '@constants/key';
+import { ENVIRONMENT_MODE } from '@constants/common';
 
 const Dropzone = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { fileMutate } = useFileMutation();
+  const isAgree = localStorage.getItem(LOCAL_STORAGE_KEY.AGREE) ? true : false;
 
   const [showTerms, setShowTerms] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleShowTerms = useCallback(() => {
+    if (!isAgree) {
+      setShowTerms(true);
+      return toast.error(t('fileUploadTermsError'));
+    }
+  }, [isAgree, t]);
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -35,17 +43,11 @@ const Dropzone = () => {
         const reader = new FileReader();
         reader.onload = () => {
           const fileText = reader.result;
-
           try {
             const json: AttackFlowJsonType = JSON.parse(fileText as string);
             // Attack Flow JSON 파일 형식 검증
             if (json.type !== 'bundle') {
               return toast.error(t('fileUploadError'));
-            }
-            // 이용약관 동의 여부 검증
-            if (localStorage.getItem(LOCAL_STORAGE_KEY.AGREE) === null) {
-              setShowTerms(true);
-              return toast.error(t('fileUploadTermsError'));
             }
             setIsLoading(true);
             toast.success(t('fileUploadSuccess'));
@@ -58,8 +60,8 @@ const Dropzone = () => {
                   .sort(),
               ),
             );
-            // 개발환경이 아닐 경우 분석 파일을 서버에 저장
-            if (ENVIRONMENT_MODE !== 'production') {
+            // 개발환경일 경우 분석 파일을 서버에 저장
+            if (ENVIRONMENT_MODE === 'production') {
               fileMutate(originFile);
             }
             // 분석 데이터를 암호화하여 URL로 전달, 분석 결과 페이지로 이동
@@ -83,40 +85,43 @@ const Dropzone = () => {
     maxFiles: 1, // 최대 업로드 파일은 1개로 제한
     multiple: false, // 단일 파일만 허용
     accept: { 'application/json': [] },
+    disabled: isLoading || showTerms || !isAgree, // 파일 업로드 중, 약관 미동의 시 비활성화
   });
 
   return (
     <>
       <TermsOfUseModal isOpen={showTerms} setIsOpen={setShowTerms} />
-      <div
-        className="flex items-center justify-center text-gray-600 border-2 border-dashed rounded-lg cursor-pointer min-h-56 bg-gray-50"
-        {...getRootProps()}
-      >
-        {isLoading ? (
-          <div className="flex flex-col items-center justify-center w-full text-center">
-            <LuLoader2 size={32} className="m-2 animate-spin" />
-            <p>{t('loading')}</p>
-          </div>
-        ) : (
-          <>
-            <input {...getInputProps()} />
-            <div className="flex flex-col items-center justify-center gap-2 px-4 text-sm text-center break-keep">
-              {isDragActive ? (
-                <>
-                  <BsFileEarmarkArrowUp size={46} />
-                  <p>{t('fileDragAndDrop')}</p>
-                </>
-              ) : (
-                <>
-                  <BsFiletypeJson size={46} />
-                  <p>{t('fileUploadDescription')}</p>
-                  <p>{t('or')}</p>
-                  <Button>{t('fileUploadButton')}</Button>
-                </>
-              )}
+      <div onClick={handleShowTerms}>
+        <div
+          className="flex items-center justify-center text-gray-600 border-2 border-dashed rounded-lg cursor-pointer min-h-56 bg-gray-50"
+          {...getRootProps()}
+        >
+          {isLoading ? (
+            <div className="flex flex-col items-center justify-center w-full text-center">
+              <LuLoader2 size={32} className="m-2 animate-spin" />
+              <p>{t('loading')}</p>
             </div>
-          </>
-        )}
+          ) : (
+            <>
+              <input {...getInputProps()} />
+              <div className="flex flex-col items-center justify-center gap-2 px-4 text-sm text-center break-keep">
+                {isDragActive ? (
+                  <>
+                    <BsFileEarmarkArrowUp size={46} />
+                    <p>{t('fileDragAndDrop')}</p>
+                  </>
+                ) : (
+                  <>
+                    <BsFiletypeJson size={46} />
+                    <p>{t('fileUploadDescription')}</p>
+                    <p>{t('or')}</p>
+                    <Button>{t('fileUploadButton')}</Button>
+                  </>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );
