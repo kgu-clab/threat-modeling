@@ -9,4 +9,5 @@ export const END_POINT = {
   ATTACKS: (id: string) => `/attacks?attackIds=${id}`,
   FILES: '/files/jsons',
   MITIGATIONS: '/mitigations',
+  NOTION: (id: string) => `https://notion-api.splitbee.io/v1/page/${id}`,
 } as const;
