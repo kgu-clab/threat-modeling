@@ -24,7 +24,7 @@ const Footer = () => {
             {t('termsOfUse')}
           </Link>
           <Link
-            to="https://github.com/KGU-C-Lab/threat-modeling"
+            to="https://github.com/KGU-C-Lab/threat-modeling/releases"
             className="pl-2 hover:underline"
             target="_blank"
           >

@@ -32,12 +32,8 @@ const resources = {
       changelog: 'Changelog',
       download: 'Download',
       fileUploadError: 'We received an invalid file, please try again.',
-      fileUploadSuccess:
-        'We received the file successfully! Let us analyze it.',
       fileUploadReadError:
         'An error occurred while converting the file to JSON.',
-      fileUploadTermsError:
-        'You must accept the Terms of Use to use the service.',
       loading: '🔎 Analyzing Attack Flow...',
       report: 'Threat Modeling Report',
       agreeInformation:
@@ -63,7 +59,7 @@ const resources = {
       benefitFirstTitle: '시스템의 보안과 안정성을 쉽게 평가하세요 👋',
       benefitFirstContent:
         'MITRE 프레임워크와 NIST 800-53을 바탕으로 위협 분석 및 대응하는 데 도움을 드릴게요.',
-      benefitSecondTitle: 'Attack Flow JSON 파일 하나만 있으면 됩니다! 👌',
+      benefitSecondTitle: 'Attack Flow JSON 파일 하나만 있으면 됩니다 👌',
       benefitSecondContent:
         '파일 업로드 한 번으로 ATT&CK ID와 관련된 Control ID, Mitigation ID, D3FEND ID, CVE 등을 자동으로 매핑해드려요.',
       benefitThirdTitle:
@@ -80,9 +76,7 @@ const resources = {
       changelog: '변경내역',
       download: '다운로드',
       fileUploadError: '올바르지 않는 파일을 받았어요, 다시 시도해 주세요.',
-      fileUploadSuccess: '정상적으로 파일을 받았어요! 분석을 해볼게요.',
       fileUploadReadError: '파일을 JSON으로 변환하는 중 오류가 발생했습니다.',
-      fileUploadTermsError: '이용약관에 동의해야 서비스 이용이 가능합니다.',
       loading: '🔎 Attack Flow를 분석중입니다...',
       report: '위협 모델링 보고서',
       agreeInformation:

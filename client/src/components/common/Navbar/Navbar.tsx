@@ -2,6 +2,7 @@ import { PATH } from '@constants/path';
 import { cn } from '@utils/component';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import {
   Select,
   SelectContent,
@@ -20,15 +21,15 @@ const Navbar = () => {
   const selected = (name: string) => {
     return cn(
       location.pathname === name
-        ? 'font-semibold text-black'
-        : 'text-gray-500 hover:text-black',
+        ? 'font-semibold text-black dark:text-white'
+        : 'text-gray-500 hover:text-black hover:dark:text-white',
     );
   };
 
   return (
-    <nav className="w-full bg-white h-14">
-      <div className="container flex items-center justify-center h-full gap-6 text-sm md:gap-4 md:divide-x md:justify-end">
-        <div className="space-x-6">
+    <nav className="w-full h-14">
+      <div className="container flex items-center justify-center h-full gap-2 text-sm divide-x md:gap-4 md:justify-end text-nowrap">
+        <div className="space-x-2 md:space-x-4">
           <Link className={selected(PATH.HOME)} to={PATH.HOME}>
             {t('home')}
           </Link>
@@ -36,7 +37,7 @@ const Navbar = () => {
             {t('guide')}
           </Link>
         </div>
-        <div className="flex items-center gap-6 md:pl-4">
+        <div className="flex items-center gap-2 pl-2 md:gap-4 md:pl-4">
           <Link
             className={selected(PATH.ROOT)}
             to="https://center-for-threat-informed-defense.github.io/attack-flow/ui/"
@@ -53,6 +54,7 @@ const Navbar = () => {
               <SelectItem value="Korea">{t('korea')}</SelectItem>
             </SelectContent>
           </Select>
+          <ThemeSwitch />
         </div>
       </div>
     </nav>
