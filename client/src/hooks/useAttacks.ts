@@ -8,6 +8,6 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 export const useAttacks = (id: string) => {
   return useSuspenseQuery({
     queryFn: () => getAttacks(id),
-    queryKey: [QUERY_KEY.ATTACKS],
+    queryKey: [QUERY_KEY.ATTACKS, id],
   });
 };
