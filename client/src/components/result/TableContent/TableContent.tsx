@@ -31,7 +31,7 @@ const TooltipComponent = ({
   relatedDefendTechniques,
 }: TooltipComponentProps) => (
   <Tooltip>
-    <TooltipTrigger className="text-gray-600 cursor-default hover:underline hover:text-black">
+    <TooltipTrigger className="text-gray-600 cursor-default hover:underline hover:text-black dark:text-gray-300">
       {mitigationId}
     </TooltipTrigger>
     <TooltipContent>
@@ -91,7 +91,7 @@ const TableContent = ({ data }: TableContentProps) => {
           <Link
             to={data.attack.attackUrl}
             target="_blank"
-            className="text-gray-600 hover:underline hover:text-black"
+            className="text-gray-600 hover:underline hover:text-black dark:text-gray-300"
           >
             {data.attack.attackId}
           </Link>
@@ -138,7 +138,7 @@ const TableContent = ({ data }: TableContentProps) => {
                   <Link
                     key={cveId}
                     to={`https://nvd.nist.gov/vuln/detail/${cveId}`}
-                    className="text-gray-600 hover:underline hover:text-black"
+                    className="text-gray-600 hover:underline hover:text-black dark:text-gray-300"
                     target="_blank"
                   >{`${cveId} ${`(${cvss || 'N/A'})`}`}</Link>
                 ))

@@ -40,8 +40,8 @@ const TermsOfUseModal = ({ isOpen, setIsOpen }: TermsOfUseModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 p-6 bg-black/20">
-      <div className="relative max-w-2xl p-4 space-y-4 transform -translate-x-1/2 -translate-y-1/2 bg-white border rounded-lg shadow-lg Absolute break-keep top-1/2 left-1/2">
+    <div className="fixed inset-0 p-6 bg-black/20 dark:bg-white/20">
+      <div className="relative max-w-2xl p-4 space-y-4 transform -translate-x-1/2 -translate-y-1/2 bg-white border rounded-lg shadow-lg dark:bg-black Absolute break-keep top-1/2 left-1/2">
         <h1 className="text-3xl font-bold">{t('termsOfUse')}</h1>
         <div className="p-2 overflow-auto border rounded-lg max-h-72">
           <NotionRenderer blockMap={data} />
@@ -52,13 +52,13 @@ const TermsOfUseModal = ({ isOpen, setIsOpen }: TermsOfUseModalProps) => {
         </div>
         <div className="space-x-2 text-sm font-semibold text-center">
           <button
-            className="text-gray-500 border rounded px-2 py-0.5"
+            className="border rounded text-gray-500 px-2.5 py-1 "
             onClick={handleCancel}
           >
             {t('cancel')}
           </button>
           <button
-            className="border rounded px-2 py-0.5 bg-black text-white"
+            className="border rounded px-2.5 py-1 bg-black text-white dark:bg-white dark:text-black"
             onClick={handleAgree}
           >
             {t('agree')}

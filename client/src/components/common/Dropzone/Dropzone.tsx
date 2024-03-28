@@ -26,11 +26,8 @@ const Dropzone = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleShowTerms = useCallback(() => {
-    if (!isAgree) {
-      setShowTerms(true);
-      return toast.error(t('fileUploadTermsError'));
-    }
-  }, [isAgree, t]);
+    if (!isAgree) setShowTerms(true);
+  }, [isAgree]);
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -50,7 +47,6 @@ const Dropzone = () => {
               return toast.error(t('fileUploadError'));
             }
             setIsLoading(true);
-            toast.success(t('fileUploadSuccess'));
             // 파일에서 분석 데이터 추출
             const techniqueIDList = Array.from(
               new Set(
@@ -93,7 +89,7 @@ const Dropzone = () => {
       <TermsOfUseModal isOpen={showTerms} setIsOpen={setShowTerms} />
       <div onClick={handleShowTerms}>
         <div
-          className="flex items-center justify-center text-gray-600 border-2 border-dashed rounded-lg cursor-pointer min-h-56 bg-gray-50"
+          className="flex items-center justify-center text-gray-600 border-2 border-dashed rounded-lg cursor-pointer min-h-56 bg-gray-50 dark:bg-transparent dark:text-gray-300"
           {...getRootProps()}
         >
           {isLoading ? (

@@ -18,7 +18,9 @@ const ExplainCard = ({ index, title, content }: ExplainCardProps) => {
       <img className="h-full p-4 max-h-36" src={images[index]} alt={title} />
       <div className="space-y-2 grow">
         <p className="text-lg font-semibold">{title}</p>
-        <p className="text-sm text-gray-600 whitespace-pre-wrap">{content}</p>
+        <p className="text-sm text-gray-600 whitespace-pre-wrap dark:text-gray-300">
+          {content}
+        </p>
       </div>
     </div>
   );
@@ -28,7 +30,7 @@ const HomeExplain = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="grid grid-cols-2 gap-4 mx-auto md:grid-cols-3">
+    <div className="grid grid-cols-2 gap-6 mx-auto md:grid-cols-3">
       {EXPLAIN.map(({ title, content }, index) => (
         <ExplainCard
           key={index}
