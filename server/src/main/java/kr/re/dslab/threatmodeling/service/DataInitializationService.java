@@ -59,9 +59,13 @@ public class DataInitializationService {
         try {
             log.info("Initializing database");
             long start = System.currentTimeMillis();
+            // Mitigation과 Attack에 대한 정보를 JSON 파일에서 읽어와 저장
             initializeMitigationsAndAttacks();
+            // Control과 Attack에 대한 정보를 JSON 파일에서 읽어와 저장
             initializeControlsAndControlAttackMappings();
+            // Mitigation과 Defend에 대한 정보를 JSON 파일에서 읽어와 저장
             initializeMitigationsAndDefends();
+            // CVE에 대한 정보를 JSON 파일에서 읽어와 저장
             initializeCves();
             long end = System.currentTimeMillis();
             log.info("Database initialized successfully");
@@ -71,6 +75,7 @@ public class DataInitializationService {
         }
     }
 
+    // JSON 파일을 읽어서 객체로 변환
     private <T> List<T> loadEntitiesFromJson(String filePath, TypeReference<List<T>> typeReference) throws IOException {
         Resource resource = resourceLoader.getResource(filePath);
         return objectMapper.readValue(resource.getInputStream(), typeReference);

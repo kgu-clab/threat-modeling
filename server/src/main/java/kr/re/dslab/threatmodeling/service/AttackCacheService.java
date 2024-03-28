@@ -60,12 +60,14 @@ public class AttackCacheService {
     private void processInBatchesAsync(List<String> allAttackIds) {
         int start = 0;
         int batchSize = 50;
+        // Attack Id를 batchSize개씩 묶어서 병렬로 처리
         while (start < allAttackIds.size()) {
             int end = Math.min(start + batchSize, allAttackIds.size());
             List<String> batch = new ArrayList<>(allAttackIds.subList(start, end));
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
                 fetchAndCacheAttackInfo(batch);
             }, taskExecutor);
+            // 모든 Future가 완료될 때까지 기다림
             future.join();
             start += batchSize;
         }
@@ -74,6 +76,8 @@ public class AttackCacheService {
     public List<AttackRelatedResponseDto> fetchAndCacheAttackInfo(List<String> attackIds) {
         List<CompletableFuture<AttackRelatedResponseDto>> futures = attackIds.stream()
                 .map(attackId -> CompletableFuture.supplyAsync(() -> {
+                    // Attack Id 별로 Attack 관련 정보를 조회하고 캐싱
+                    // 캐시된 데이터가 있으면 반환, 없으면 조회 후 캐싱
                     AttackRelatedResponseDto cachedData = getCachedAttackRelatedInfo(attackId);
                     if (cachedData != null) {
                         return cachedData;
@@ -114,6 +118,7 @@ public class AttackCacheService {
         return createAttackRelatedResponseDto(attack);
     }
 
+    // Attack Id 별로 Attack 관련 정보 조회
     protected AttackRelatedResponseDto createAttackRelatedResponseDto(Attack attack) {
         AttackResponseDto attackResponseDto = AttackResponseDto.of(attack);
         List<ControlResponseDto> controlResponseDtos = controlService.getControlByAttackId(attack.getAttackId());

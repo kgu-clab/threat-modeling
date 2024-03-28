@@ -29,6 +29,7 @@ public class FileService {
         return urls;
     }
 
+    // 파일을 저장하고 저장된 파일의 URL을 반환
     public String saveFile(MultipartFile multipartFile, String path) throws FileUploadFailException {
         String realFilename = fileHandler.saveFile(multipartFile, path);
         return resourceProperties.getUrl() + "/" + realFilename;

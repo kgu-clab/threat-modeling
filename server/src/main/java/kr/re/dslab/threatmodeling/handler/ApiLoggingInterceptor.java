@@ -15,12 +15,14 @@ public class ApiLoggingInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // 요청 시작 시간을 저장
         request.setAttribute("startTime", System.currentTimeMillis());
         return true;
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        // 로깅에 필요한 정보를 수집
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String id = (authentication == null || authentication.getName() == null) ? "anonymous" : authentication.getName();
         String clientIpAddress = HttpReqResUtil.getClientIpAddressIfServletRequestExist();
@@ -28,6 +30,7 @@ public class ApiLoggingInterceptor implements HandlerInterceptor {
         String httpMethod = request.getMethod();
         int httpStatus = response.getStatus();
 
+        // 요청에 걸린 시간 계산
         long startTime = (Long) request.getAttribute("startTime");
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;

@@ -22,6 +22,7 @@ public class CveService {
         return aggregateCves(cves, attackId);
     }
 
+    // Attack ID에 해당하는 CVE를 찾아서 카테고리별로 분류하여 반환
     private List<CveResponseDto> aggregateCves(List<Cve> cves, String attackId) {
         return cves.parallelStream()
                 .flatMap(cve -> Stream.of(

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Slf4j
+// 메서드 실행 시간을 로깅하는 AOP
 public class ExecutionTimeAspect {
 
     @Around("@annotation(kr.re.dslab.threatmodeling.annotation.LogExecutionTime)")

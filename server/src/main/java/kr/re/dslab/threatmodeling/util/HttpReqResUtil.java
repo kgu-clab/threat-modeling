@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+// Client IP 주소를 가져오는 유틸리티 클래스
 public class HttpReqResUtil {
 
     private static final String[] IP_HEADER_CANDIDATES = {

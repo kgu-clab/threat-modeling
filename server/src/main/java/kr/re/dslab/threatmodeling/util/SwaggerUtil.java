@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 
 @Component
+// Swagger UI에 대한 요청인지 확인하는 유틸리티 클래스
 public class SwaggerUtil implements InitializingBean {
 
     private static String[] swaggerPatterns;
